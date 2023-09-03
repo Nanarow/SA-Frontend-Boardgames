@@ -1,0 +1,30 @@
+import * as Slider from '@radix-ui/react-slider';
+import { useState } from 'react';
+
+const MySlider = (props: Slider.SliderProps) => {
+    const [slideValue, setSlideValue] = useState<number>(0)
+    return (
+        <div className="flex flex-row items-center">
+            <Slider.Root
+                className="m-2 relative flex items-center select-none touch-none w-[200px] h-5"
+                defaultValue={[50]}
+                max={100}
+                step={1}
+                onValueChange={(v) => setSlideValue(v[0])}
+                {...props}
+            >
+                <Slider.Track className="bg-black relative grow rounded-full h-[3px] ">
+                    <Slider.Range className=" absolute bg-black rounded-full h-full " />
+                </Slider.Track>
+                <Slider.Thumb
+                    className="block w-5 h-5 bg-white shadow-solid-s rounded-[10px] border-2 border-black active:scale-125 outline-none -translate-y-[2px] cursor-pointer"
+                    aria-label="Volume"
+                />
+            </Slider.Root>
+            <label className="ml-4">{slideValue}</label>
+        </div>
+
+    )
+};
+
+export default MySlider;
