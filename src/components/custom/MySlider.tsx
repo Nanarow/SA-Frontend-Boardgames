@@ -1,5 +1,5 @@
 import * as Slider from '@radix-ui/react-slider';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface ISlider extends Omit<Slider.SliderProps, "defaultValue"> {
     defaultValue?: number;
