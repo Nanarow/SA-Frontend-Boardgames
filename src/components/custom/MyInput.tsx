@@ -1,34 +1,40 @@
+import React from 'react'
 import { InputHTMLAttributes } from "react";
-import { IconBaseProps, IconType } from "react-icons";
 import { HiOutlineExclamationCircle } from "react-icons/hi2";
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
     error?: string;
-    leftIcon?: IconType;
-    iconProps?: IconBaseProps;
-    rightIcon?: IconType;
+    leftIcon?: JSX.Element
     state?: "error" | "normal";
     bgColor?: string;
     addClass?: string;
 }
 
-const MyInput = (props: IInput) => {
+const MyInput: React.FC<IInput> = ({
+    error,
+    leftIcon,
+    state,
+    bgColor = 'bg-white',
+    addClass = '',
+    ...inputProps
+}) => {
     return (
         <div className="relative flex flex-row">
-            {props.leftIcon === undefined ? null : (
-                <props.leftIcon className=" absolute left-4 top-[17px]" {...props.iconProps} />
-            )}
+            <div className=" absolute left-4 top-[17px] flex items-center justify-center">
+                {leftIcon}
+            </div>
             <input
-                {...props}
-                className={`input ${props.leftIcon === undefined ? "pl-2" : "pl-7"} ${props.rightIcon === undefined ? "pr-2" : "pr-7"
-                    } ${props.bgColor ?? "bg-[#ffffff]"} ${props.addClass} grow`}
+                {...inputProps}
+                className={`input ${leftIcon ? "pl-7" : "pl-2"} pr-2 ${bgColor} ${addClass} grow`}
             />
-            <Tooltip placement="right" title={props.error ?? "Error"} color={"#ff5050"}>
-                <HiOutlineExclamationCircle className={`cursor-pointer absolute top-[18px] right-4 ${props.state === "error" ? "" : "hidden"}`} color='var(--red)' />
-            </Tooltip>
-            {props.rightIcon === undefined ? null : (
-                <props.rightIcon className=" absolute right-10 top-[18px]" {...props.iconProps} />
-            )}
+            {/* <MyTooltip placement="right" title={error ?? "Error"} color={"#ff5050"}>
+                
+            </MyTooltip> */}
+            <HiOutlineExclamationCircle
+                className={`cursor-pointer absolute top-[18px] right-4 
+                    ${state === "error" ? "" : "hidden"}`}
+                color="var(--red)"
+            />
         </div>
     );
 };
