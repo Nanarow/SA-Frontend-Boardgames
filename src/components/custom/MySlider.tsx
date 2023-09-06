@@ -1,13 +1,18 @@
 import * as Slider from '@radix-ui/react-slider';
 import { useState } from 'react';
 
-const MySlider = (props: Slider.SliderProps) => {
-    const [slideValue, setSlideValue] = useState<number>(0)
+interface ISlider extends Omit<Slider.SliderProps, "defaultValue"> {
+    defaultValue?: number;
+}
+
+const MySlider: React.FC<ISlider> = ({ defaultValue = 0, ...props }) => {
+    const [slideValue, setSlideValue] = useState<number>(defaultValue)
+
     return (
         <div className="flex flex-row items-center">
             <Slider.Root
                 className="m-2 relative flex items-center select-none touch-none w-[200px] h-5"
-                defaultValue={[50]}
+                defaultValue={[defaultValue]}
                 max={100}
                 step={1}
                 onValueChange={(v) => setSlideValue(v[0])}

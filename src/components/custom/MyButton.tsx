@@ -1,5 +1,4 @@
 import React, { ButtonHTMLAttributes, } from 'react'
-import { IconBaseProps, IconType } from "react-icons";
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     label?: string;
