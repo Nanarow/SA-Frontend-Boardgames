@@ -1,6 +1,6 @@
-import MyButton from './MyButton'
+import MyButton from './custom/MyButton'
 import { FaHouseChimney, FaUser } from 'react-icons/fa6'
-import MyRadioGroup from './MyRadioGroup'
+import MyRadioGroup from './custom/MyRadioGroup'
 import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {

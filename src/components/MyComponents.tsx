@@ -1,13 +1,13 @@
-import MyInput from "./MyInput"
-import MyButton from "./MyButton"
+import MyInput from "./custom/MyInput"
+import MyButton from "./custom/MyButton"
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { RiLoaderLine } from "react-icons/ri";
 import { BiLoaderCircle } from "react-icons/bi";
-import MyCheckbox from "./MyCheckbox";
-import MySlider from "./MySlider";
-import MyDialog from "./MyDialog";
+import MyCheckbox from "./custom/MyCheckbox";
+import MySlider from "./custom/MySlider";
+import MyDialog from "./custom/MyDialog";
 import TestDialog from "./TestDialog";
-import MyRadioGroup from "./MyRadioGroup";
+import MyRadioGroup from "./custom/MyRadioGroup";
 const MyComponents = () => {
     return (
         <div className="flex flex-col bg-[#ffffff] w-[25%] h-screen translate-x-[20px]">

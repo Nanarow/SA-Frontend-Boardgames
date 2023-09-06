@@ -1,7 +1,7 @@
 import React from 'react'
-import DialogCloser from './DialogCloser'
-import MyButton from './MyButton'
-import MyInput from './MyInput'
+import DialogCloser from './custom/DialogCloser'
+import MyButton from './custom/MyButton'
+import MyInput from './custom/MyInput'
 
 const TestDialog = () => {
     return (
