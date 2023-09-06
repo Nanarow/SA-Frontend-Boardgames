@@ -1,9 +1,11 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import MyComponents from './components/MyComponents';
 
 function App() {
   return (
     <Router >
       <Routes>
+        <Route path="/components" element=<MyComponents /> />
         <Route path="/boardgames" element=<div>boardgames</div> />
         <Route path="/rooms" element=<div>rooms</div> />
         <Route path="/recent" element=<div>recent</div> />
