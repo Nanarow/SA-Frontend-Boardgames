@@ -32,7 +32,7 @@ const MyDialog = (props: IDialog) => (
                     props.disableCloser ? null :
                         <DialogCloser>
                             <div className="absolute top-[0px] right-[0px]">
-                                <MyButton leftIcon={<FaXmark />} bgColor='bg-[#ff0000]' />
+                                <MyButton leftIcon={<FaXmark />} />
                             </div>
                         </DialogCloser>
                 }

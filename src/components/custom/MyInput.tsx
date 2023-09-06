@@ -19,13 +19,13 @@ const MyInput: React.FC<IInput> = ({
     ...inputProps
 }) => {
     return (
-        <div className="relative flex flex-row">
+        <div className={`relative flex flex-row ${addClass}`}>
             <div className=" absolute left-4 top-[17px] flex items-center justify-center">
                 {leftIcon}
             </div>
             <input
                 {...inputProps}
-                className={`input ${leftIcon ? "pl-7" : "pl-2"} pr-2 ${bgColor} ${addClass} grow`}
+                className={`input ${leftIcon ? "pl-7" : "pl-2"} pr-2 ${bgColor} ${addClass}`}
             />
             {/* <MyTooltip placement="right" title={error ?? "Error"} color={"#ff5050"}>
                 

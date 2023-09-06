@@ -7,6 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'solid-s': '2px 2px #000000;;',
+        'solid-m': '4px 4px #000000;',
+        'solid-l': '8px 8px #000000;',
+        'solid-xl': '16px 16px #000000;'
+      },
       keyframes: {
         overlayShow: {
           from: { opacity: 0 },
