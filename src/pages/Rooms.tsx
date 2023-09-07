@@ -9,10 +9,10 @@ const Rooms = () => {
                 <div className='flex flex-row gap-8 mt-[40px]'>
                     <div className='w-[600px] h-[240px] rounded border-2 border-black shadow-solid-m relative'>
                         <div className='flex flex-col'>
-                            <label className=' text-3xl font-bold ml-12 mt-3.5'>M01</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>ห้องเล่นส ำหรับ 6-8 คน</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>available</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>__.__</label>
+                            <label className=' text-3xl font-bold ml-12 mt-4'>M01</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>ห้องเล่นสำหรับ 6-8 คน</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>available</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>__.__</label>
                         </div>
                         <div className=' absolute bottom-2 right-2'>
                             <MyButton label='Reserve' />
@@ -20,10 +20,10 @@ const Rooms = () => {
                     </div>
                     <div className='w-[600px] h-[240px] rounded border-2 border-black shadow-solid-m relative'>
                         <div className='flex flex-col'>
-                            <label className=' text-3xl font-bold ml-12 mt-3.5'>M03</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>ห้องเล่นส ำหรับ 6-8 คน</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>Unavailable</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>14.00-16.00 am</label>
+                            <label className=' text-3xl font-bold ml-12 mt-4'>M03</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>ห้องเล่นสำหรับ 6-8 คน</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>Unavailable</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>14.00-16.00 am</label>
                         </div>
                         <div className=' absolute bottom-2 right-2'>
                             <MyButton label='Reserve' />
@@ -33,10 +33,10 @@ const Rooms = () => {
                 <div className='flex flex-row gap-8 '>
                     <div className='w-[600px] h-[240px] rounded border-2 border-black shadow-solid-m relative'>
                         <div className='flex flex-col'>
-                            <label className=' text-3xl font-bold ml-12 mt-3.5'>M02</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>ห้องเล่นส ำหรับ 6-8 คน</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>Unavailable</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>10.00-12.00 am</label>
+                            <label className=' text-3xl font-bold ml-12 mt-4'>M02</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>ห้องเล่นสำหรับ 6-8 คน</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>Unavailable</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>10.00-12.00 am</label>
                         </div>
                         <div className=' absolute bottom-2 right-2'>
                             <MyButton label='Reserve' />
@@ -44,10 +44,10 @@ const Rooms = () => {
                     </div>
                     <div className='w-[600px] h-[240px] rounded border-2 border-black shadow-solid-m relative'>
                         <div className='flex flex-col'>
-                            <label className=' text-3xl font-bold ml-12 mt-3.5'>M04</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>ห้องเล่นส ำหรับ 6-8 คน</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>available</label>
-                            <label className=' text-2xl font-semibold ml-16 mt-3.5'>__.__</label>
+                            <label className=' text-3xl font-bold ml-12 mt-4'>M04</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>ห้องเล่นสำหรับ 6-8 คน</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>available</label>
+                            <label className=' text-2xl font-semibold ml-16 mt-4'>__.__</label>
                         </div>
                         <div className=' absolute bottom-2 right-2'>
                             <MyButton label='Reserve' />
@@ -64,9 +64,12 @@ const Rooms = () => {
                     <div className='w-[120px] h-[56px] rounded-full border-2 border-black flex items-center justify-center'>
                         <label className=' text-2xl font-bold text-center'>L</label>
                     </div>
+
                 </div>
+
             </div>
         </main>
     )
 }
+
 export default Rooms
