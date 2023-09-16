@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { InputHTMLAttributes } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi2";
 
@@ -10,14 +10,14 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
     addClass?: string;
 }
 
-const MyInput: React.FC<IInput> = ({
+const MyInput = forwardRef<HTMLInputElement, IInput>(({
     error,
     leftIcon,
     state,
     bgColor = 'bg-white',
     addClass = '',
     ...inputProps
-}) => {
+}, ref) => {
     return (
         <div className={`relative flex flex-row ${addClass}`}>
             <div className=" absolute left-4 top-[17px] flex items-center justify-center">
@@ -26,6 +26,7 @@ const MyInput: React.FC<IInput> = ({
             <input
                 {...inputProps}
                 className={`input ${leftIcon ? "pl-7" : "pl-2"} pr-2 ${bgColor} ${addClass}`}
+                ref={ref}
             />
             {/* <MyTooltip placement="right" title={error ?? "Error"} color={"#ff5050"}>
                 
@@ -37,6 +38,6 @@ const MyInput: React.FC<IInput> = ({
             />
         </div>
     );
-};
+})
 
 export default MyInput;

@@ -26,19 +26,6 @@ code {
     0px 8px #af2038, 0px 10px #15c3ba;
 }
 
-.btn {
-  border: 2px solid black;
-  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
-  box-shadow: 2px 2px black;
-  margin: 0.5rem;
-  border-radius: 4px;
-}
-.btn:active,
-.btn:disabled {
-  box-shadow: none;
-  transform: translate(2px, 2px);
-}
-
 .input {
   flex-grow: 1;
   border-width: 2px;
@@ -49,11 +36,13 @@ code {
   box-shadow: 2px 3px rgba(0, 0, 0, 1);
   margin: 0.5rem;
 }
+
 .input:focus {
   border: 2px solid #4cb8b4;
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
+
 .loader {
   animation: spin 2s infinite linear;
 }
@@ -61,7 +50,4 @@ code {
   to {
     transform: rotate(1turn);
   }
-}
-.my-sd {
-  box-shadow: 4px 4px rgba(0, 0, 0);
 }
