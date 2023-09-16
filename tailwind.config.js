@@ -13,6 +13,10 @@ module.exports = {
         'solid-l': '8px 8px #000000;',
         'solid-xl': '16px 16px #000000;'
       },
+      maxWidth: {
+        'm-1': 'calc(100% - 0.5rem);',
+        'm-2': 'calc(100% - 1.0rem);'
+      },
       keyframes: {
         overlayShow: {
           from: { opacity: 0 },
