@@ -13,14 +13,13 @@ const MyButton = forwardRef<HTMLButtonElement, IButton>(
     ({
         label,
         leftIcon,
-        bgColor = 'bg-white',
         className = "",
         ...buttonProps
     }, ref) => {
 
         return (
             <button
-                className={twMerge("", classBase, animation, bgColor, className)}
+                className={twMerge("", classBase, animation, className)}
                 {...buttonProps}
                 ref={ref}
             >

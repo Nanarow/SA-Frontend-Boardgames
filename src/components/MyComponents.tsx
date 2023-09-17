@@ -33,12 +33,13 @@ const MyComponents = () => {
             </div>
             <div className="flex flex-wrap">
                 <MyCheckbox label="Accept terms and conditions." defaultChecked={true} />
+                <MyCheckbox className=" bg-slate-500 aria-checked:bg-red-500 scale-125" markColor="white" />
                 <MySlider />
             </div>
             <MyTooltip position="top">
                 <MyButton label="Submit" />
             </MyTooltip>
-            <MyButton leftIcon={<RiLoaderLine />} />
+            <MyButton leftIcon={<RiLoaderLine className=" animate-spin" />} />
             <MyDialog content={<TestDialog />} >
                 <MyButton label="Open dialog" />
             </MyDialog>
