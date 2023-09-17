@@ -16,6 +16,17 @@ code {
     monospace;
 }
 
+/* input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+   -webkit-appearance: none; 
+  margin: 0;
+} */
+/*
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+} */
+
 .title {
   -webkit-text-stroke: 1px black;
   letter-spacing: 0.1em;
@@ -24,30 +35,4 @@ code {
   font-weight: 900;
   text-shadow: 0px 2px #ef9a38, 0px 4px #e0683e, 0px 6px #dc4843,
     0px 8px #af2038, 0px 10px #15c3ba;
-}
-
-.input {
-  flex-grow: 1;
-  border-width: 2px;
-  border-color: rgb(0 0 0 / 1);
-  border-radius: 4px;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  box-shadow: 2px 3px rgba(0, 0, 0, 1);
-  margin: 0.5rem;
-}
-
-.input:focus {
-  border: 2px solid #4cb8b4;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-.loader {
-  animation: spin 2s infinite linear;
-}
-@keyframes spin {
-  to {
-    transform: rotate(1turn);
-  }
 }

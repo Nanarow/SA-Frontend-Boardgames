@@ -16,10 +16,10 @@ const MyCheckbox: React.FC<ICheckbox> = ({
 }) => (
     <div className="flex flex-row items-center m-2">
         <Checkbox.Root
-            className={twMerge("shadow-solid-s flex h-[20px] w-[20px] items-center justify-center rounded bg-white aria-checked:bg-white border-2 border-black", className)}
+            className={twMerge("shadow-solid-s flex h-[20px] w-[20px] items-center justify-center rounded bg-white aria-checked:bg-white border-2 border-black transition-colors", className)}
             {...checkBoxProps}
         >
-            <Checkbox.Indicator className=" flex items-center relative">
+            <Checkbox.Indicator className=" flex items-center relative animate-scale-up">
                 <FaCheck size="14px" color={markColor} />
             </Checkbox.Indicator>
         </Checkbox.Root>

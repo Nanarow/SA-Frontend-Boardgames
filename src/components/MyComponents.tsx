@@ -17,7 +17,7 @@ const MyComponents = () => {
         <div className="flex flex-col bg-[#ffffff] w-[25%] h-screen translate-x-[20px]">
             <MyInput type="date"></MyInput>
             <MyInput type="email" value={"test@example.com"} readOnly></MyInput>
-            <MyInput type="number" placeholder="0"></MyInput>
+            <MyInput type="number" defaultValue={0}></MyInput>
             <MyInput type="search" leftIcon={<FaMagnifyingGlass />}></MyInput>
             <MyInput type="password" placeholder="Password"></MyInput>
             <MyInput type="text" ref={input}></MyInput>
