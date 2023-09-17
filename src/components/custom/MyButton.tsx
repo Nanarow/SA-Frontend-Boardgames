@@ -4,7 +4,6 @@ import { twMerge } from 'tailwind-merge';
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     label?: string;
     leftIcon?: JSX.Element;
-    bgColor?: string;
     className?: string;
 }
 const animation = "enabled:active:translate-x-[2px] enabled:active:translate-y-[2px] transition duration-100 enabled:active:shadow-none enabled:hover:scale-110 disabled:opacity-50 "

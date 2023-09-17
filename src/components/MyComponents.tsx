@@ -10,6 +10,7 @@ import TestDialog from "./TestDialog";
 import MyRadioGroup from "./custom/MyRadioGroup";
 import { useRef } from "react";
 import { MyTooltip } from "./custom/MyTooltip";
+import MyToggleButton from "./custom/MyToggleButton";
 const MyComponents = () => {
     const input = useRef<HTMLInputElement>(null);
     return (
@@ -31,6 +32,7 @@ const MyComponents = () => {
                 <MyButton leftIcon={<BiLoaderCircle className="" size="22px" />} label="loading" />
                 <MyButton label="Disable" disabled />
             </div>
+            <MyToggleButton label="Toggle" />
             <div className="flex flex-wrap">
                 <MyCheckbox label="Accept terms and conditions." defaultChecked={true} />
                 <MyCheckbox className=" bg-slate-500 aria-checked:bg-red-500 scale-125" markColor="white" />

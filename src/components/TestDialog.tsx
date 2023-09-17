@@ -23,7 +23,7 @@ const TestDialog = () => {
                     <label className=" text-slate-500 cursor-pointer">Cancel</label>
                 </DialogCloser>
                 <DialogCloser>
-                    <MyButton label='Save changes' bgColor='bg-[#ff6080]' />
+                    <MyButton label='Save changes' className='bg-[#ff6080]' />
                 </DialogCloser>
             </div>
         </div>
