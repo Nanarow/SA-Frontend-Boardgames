@@ -35,7 +35,7 @@ const MyComponents = () => {
                 <MyCheckbox label="Accept terms and conditions." defaultChecked={true} />
                 <MySlider />
             </div>
-            <MyTooltip>
+            <MyTooltip position="top">
                 <MyButton label="Submit" />
             </MyTooltip>
             <MyButton leftIcon={<RiLoaderLine />} />
