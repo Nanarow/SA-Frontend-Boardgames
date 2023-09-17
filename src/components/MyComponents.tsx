@@ -9,6 +9,7 @@ import MyDialog from "./custom/MyDialog";
 import TestDialog from "./TestDialog";
 import MyRadioGroup from "./custom/MyRadioGroup";
 import { useRef } from "react";
+import { MyTooltip } from "./custom/MyTooltip";
 const MyComponents = () => {
     const input = useRef<HTMLInputElement>(null);
     return (
@@ -34,7 +35,9 @@ const MyComponents = () => {
                 <MyCheckbox label="Accept terms and conditions." defaultChecked={true} />
                 <MySlider />
             </div>
-            <MyButton label="Submit" />
+            <MyTooltip>
+                <MyButton label="Submit" />
+            </MyTooltip>
             <MyButton leftIcon={<RiLoaderLine />} />
             <MyDialog content={<TestDialog />} >
                 <MyButton label="Open dialog" />

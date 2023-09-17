@@ -24,7 +24,7 @@ const BoardGames: React.FC<IBoard> = ({ role = "user" }) => {
             <div className="flex flex-row h-full">
                 <aside className=' w-[20%] h-[88%] mt-0 ml-4 mr-4 border-2 border-black my-sd rounded'>
                     <div className=" flex flex-row w-full">
-                        <MyInput addClass=' w-[80%]' placeholder="Search" />
+                        <MyInput className=' w-[80%]' placeholder="Search" />
                         <MyButton leftIcon={<FaMagnifyingGlass />} />
                     </div>
                     <label className="m-2 text-lg font-semibold">Age (Year)</label>
@@ -98,20 +98,20 @@ const BoardGames: React.FC<IBoard> = ({ role = "user" }) => {
                         ))}
                     </div>
                     <div className=" h-[10%] flex flex-row justify-end relative items-center">
-                        <MyButton leftIcon={<FaCaretLeft />} addClass=' h-[35.2px] w-[35.2px]' />
+                        <MyButton leftIcon={<FaCaretLeft />} className=' h-[35.2px] w-[35.2px]' />
                         <div className="flex flex-row items-center">
                             <label className=" font-medium text-center text-lg mr-2 border-2 border-black h-[35.2px] w-[35.2px] rounded translate-y-[2px]">1</label>
-                            <MyButton label='2' addClass='w-[36px]' />
+                            <MyButton label='2' className='w-[36px]' />
                             <label className=" font-medium text-center text-lg ml-2 border-2 border-black h-[35.2px] w-[35.2px] rounded translate-y-[2px]">3</label>
                         </div>
 
                         <div className="mr-4">
-                            <MyButton leftIcon={<FaCaretRight />} addClass=' h-[35.2px] w-[35.2px]' />
+                            <MyButton leftIcon={<FaCaretRight />} className=' h-[35.2px] w-[35.2px]' />
                         </div>
                         {
                             (role === "admin") ?
                                 <div className="flex items-center absolute top-0 left-0 mt-1 mr-1 cursor-pointer">
-                                    <MyButton leftIcon={<FaPlus />} addClass=' h-[35.2px] w-[35.2px]' />
+                                    <MyButton leftIcon={<FaPlus />} className=' h-[35.2px] w-[35.2px]' />
                                 </div>
                                 : null
                         }

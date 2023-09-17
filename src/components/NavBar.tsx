@@ -18,7 +18,7 @@ const NavBar = () => {
                 <MyRadioGroup items={["Board Games", "Rooms", "Recent", "Pricing"]} addClass=" w-[480px]" defaultValue="Board Games" onValueChange={(page) => onPageChange(page)} />
             </div>
             <div className="mx-4 grow flex flex-col">
-                <MyButton leftIcon={<FaUser />} addClass="max-w-[80px]" />
+                <MyButton leftIcon={<FaUser />} className="max-w-[80px]" />
             </div>
         </nav>
     )

@@ -1,6 +1,7 @@
 import { InputHTMLAttributes, forwardRef } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
+import { MyTooltip } from "./MyTooltip";
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
     errorMsg?: string;
@@ -27,7 +28,9 @@ const MyInput = forwardRef<HTMLInputElement, IInput>(({
                 ref={ref}>
             </input>
             {((inputProps.type === "email" || inputProps.type === "password") && state === "normal") ?
-                <span className="absolute w-6 h-6 flex items-center justify-center right-0 mr-2"><HiOutlineExclamationCircle color="red" /></span> : null}
+                <MyTooltip className=" bg-red-600">
+                    <span className="absolute w-6 h-6 flex items-center justify-center right-0 mr-2"><HiOutlineExclamationCircle color="red" /></span>
+                </MyTooltip> : null}
         </div>
     );
 })
