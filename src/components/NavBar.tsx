@@ -1,7 +1,7 @@
 import MyButton from './custom/MyButton'
 import { FaHouseChimney, FaUser } from 'react-icons/fa6'
-import MyRadioGroup from './custom/MyRadioGroup'
 import { useNavigate } from 'react-router-dom';
+import MyMenu from './custom/MyMenu';
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ const NavBar = () => {
                 <label className="ml-2 text-xl font-bold">House Of Board Games</label>
             </div>
             <div className=" grow">
-                <MyRadioGroup items={["Board Games", "Rooms", "Recent", "Pricing"]} className=" w-[480px]" defaultValue="Board Games" onValueChange={(page) => onPageChange(page)} />
+                <MyMenu items={["Board Games", "Rooms", "Recent", "Pricing"]} className=" w-[480px]" defaultValue="Board Games" onValueChange={(page) => onPageChange(page)} />
             </div>
             <div className="mx-4 grow flex flex-col">
                 <MyButton leftIcon={<FaUser />} className="max-w-[80px]" />

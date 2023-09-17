@@ -7,7 +7,6 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
     errorMsg?: string;
     leftIcon?: JSX.Element
     state?: "error" | "normal";
-    addClass?: string;
 }
 
 const MyInput = forwardRef<HTMLInputElement, IInput>(({

@@ -36,7 +36,7 @@ module.exports = {
         overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
         contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
         spin: 'spin 2s linear infinite;',
-        'scale-up': 'scaleUp 150ms cubic-bezier(0, 0, 0.2, 1)',
+        'scale-up': 'scaleUp 100ms cubic-bezier(0, 0, 0.2, 1)',
         'show-up': 'overlayShow 2s cubic-bezier(0, 0, 0.2, 1)'
       },
     },

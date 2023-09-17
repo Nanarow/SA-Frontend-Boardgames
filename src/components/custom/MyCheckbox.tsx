@@ -4,7 +4,6 @@ import { FaCheck } from 'react-icons/fa6';
 import { twMerge } from 'tailwind-merge';
 interface ICheckbox extends Checkbox.CheckboxProps {
     label?: string;
-    className?: string;
     markColor?: string;
 
 }

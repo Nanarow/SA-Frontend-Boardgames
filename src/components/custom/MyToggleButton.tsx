@@ -3,7 +3,6 @@ import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface IToggle extends Toggle.ToggleProps {
-  className?: string
   label?: string;
 }
 const MyToggleButton = forwardRef<HTMLButtonElement, IToggle>(({
