@@ -1,43 +1,42 @@
 interface Boardgames {
   id: string;
   title: string;
-  nop: string;
-  age: string;
-  playtime: number;
+  numberOfPlayers: string;
+  minAge: string;
+  playTime: number;
   genre: string;
   rentalPrice: number;
-  qis: number;
-  qio: number;
+  quantityInStock: number;
+  quantityOnOrders: number;
   deposit: number;
   src: string;
   tutorial: string;
 }
 
-interface GameBill {
-  bid: string;
-  bgid: string;
+interface Bill {
+  id: string;
+  memberId: string;
+  status: string;
+  total: number;
+}
+interface GameBill extends Bill {
+  boardgameId: string;
   startDate: Date;
   endDate: Date;
   returnStatus: string;
 }
-
-interface Bill {
-  id: string;
-  mid: string;
-  status: string;
-  total: number;
-}
-
-interface RoomBill {
-  bid: string;
-  roomID: string;
+interface RoomBill extends Bill {
+  roomId: string;
   startTime: Date;
   endTime: Date;
+}
+interface MemberBill extends Bill {
+  memberTypeId: string;
 }
 
 interface Room {
   id: string;
-  typeId: string;
+  roomTypeId: string;
   name: string;
   state: string;
 }
@@ -58,7 +57,7 @@ interface User {
 
 interface Member {
   id: string;
-  uid: string;
+  userId: string;
   memberTypeID: string;
   point: number;
 }
@@ -69,11 +68,6 @@ interface MemberType {
   maxRoom: string;
   maxBoardgames: string;
   price: string;
-}
-
-interface MemberBill {
-  bid: string;
-  memberTypeID: string;
 }
 
 export type {
