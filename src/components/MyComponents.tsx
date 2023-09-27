@@ -45,7 +45,7 @@ const MyComponents = () => {
                     <MyButton leftIcon={<BiLoaderCircle className="" size="22px" />} />
                     <MyButton leftIcon={<BiLoaderCircle className="" size="22px" />} label="loading" />
                     <MyButton label="Disable" disabled />
-                    <MyButton label="Test Api" />
+                    <MyButton label="Test Api V2" />
                 </div>
                 <MyToggleButton label="Toggle" />
                 <div className="flex flex-wrap">
