@@ -7,28 +7,11 @@ interface Boardgame {
   genre: string;
   rentalPrice: number;
   quantityInStock: number;
-  quantityOnOrders: number;
+  quantityInRental: number;
   deposit: number;
   src: string;
   tutorial: string;
 }
-
-const BoardgameList: Boardgame[] = [
-  {
-    id: 0,
-    title: "Exploding Kittens Original",
-    numberOfPlayers: "2 - 5",
-    minAge: "18",
-    playTime: 10,
-    genre: "AnimalsCard GameComic Book / StripHumorMature / Adult",
-    rentalPrice: 50,
-    quantityInStock: 18,
-    quantityOnOrders: 2,
-    deposit: 300,
-    src: "https://www.gameology.com.au/cdn/shop/products/8_a5e882b8-5842-4c06-8dd5-51c10fedf074_590x.progressive.jpg?v=1624577317",
-    tutorial: "https://youtu.be/rcVpTb-iPoQ",
-  },
-];
 
 interface Bill {
   id: number;
