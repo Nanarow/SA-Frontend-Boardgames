@@ -22,7 +22,7 @@ const MySlider: React.FC<ISlider> = ({ defaultValue = 0, ...props }) => {
                     <Slider.Range className=" absolute bg-black rounded-full h-full " />
                 </Slider.Track>
                 <Slider.Thumb
-                    className="block w-5 h-5 bg-white shadow-solid-s rounded-[10px] border-2 border-black active:scale-125 outline-none -translate-y-[2px] cursor-pointer"
+                    className="block w-5 h-5 bg-white shadow-solid-s rounded-[10px] border-2 border-black active:scale-125 transition-transform outline-none -translate-y-[2px] cursor-pointer"
                     aria-label="Volume"
                 />
             </Slider.Root>
