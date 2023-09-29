@@ -10,8 +10,14 @@ class HTTPRequest {
     this.Resource = Resource;
   }
 
-  protected async Get(id?: number) {
+  protected async Get() {
+    return await this.Send("GET", `${this.BaseUrl}/${this.Resource}`);
+  }
+  protected async Find(id: number) {
     return await this.Send("GET", `${this.BaseUrl}/${this.Resource}/${id}`);
+  }
+  protected async Query(query: string) {
+    return await this.Send("GET", `${this.BaseUrl}/${this.Resource}?${query}`);
   }
   protected async Delete(id: number) {
     return await this.Send("DELETE", `${this.BaseUrl}/${this.Resource}/${id}`);

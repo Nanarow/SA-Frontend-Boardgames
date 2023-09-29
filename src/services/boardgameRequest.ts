@@ -5,12 +5,12 @@ export class BoardgameRequest extends HTTPRequest {
   constructor() {
     super(API_URL, "boardgames");
   }
-  public async GetBoardgames() {
-    return (await super.Get()) as Boardgame[];
+  public async GetBoardgames(query: string) {
+    return (await super.Query(query)) as Boardgame[];
   }
 
   public async FindBoardgame(id: number) {
-    return (await super.Get(id)) as Boardgame;
+    return (await super.Find(id)) as Boardgame;
   }
 
   public async CreateBoardgame(data: Boardgame) {

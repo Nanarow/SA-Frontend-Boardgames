@@ -1,5 +1,5 @@
 interface Boardgame {
-  id: number;
+  id?: number;
   title: string;
   numberOfPlayers: string;
   minAge: string;
