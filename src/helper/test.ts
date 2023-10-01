@@ -1,4 +1,24 @@
-import { Boardgame } from "../interfaces";
+import {
+  Boardgame,
+  GameBill,
+  Bill,
+  Room,
+  RoomBill,
+  RoomType,
+  User,
+  Member,
+  MemberType,
+  MemberBill,
+} from "../interfaces";
+
+const tempRoomType: RoomType[] = [
+  {
+    id: 0,
+    name: "",
+    capacity: "",
+    price: 0,
+  },
+];
 
 // export const BoardgameList: Boardgame[] = [
 //   {
