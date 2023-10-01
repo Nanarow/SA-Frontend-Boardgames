@@ -88,7 +88,7 @@ const MyComponents = () => {
                 <MyPagination />
                 <MyButton label="Test Api delete" onClick={() => handleDelete(2)} />
                 <MyButton label="Test Api get" onClick={handleGet} />
-                <MyButton label="Test Api get by id" onClick={() => handleGetById(4)} />
+                <MyButton label="Test Api get by id" onClick={() => handleGetById(30)} />
                 <MyButton label="Test Api update" onClick={() => handleUpdate(bg2)} />
                 <MyButton label="Test Api create" onClick={() => handleCreate()} />
             </div>

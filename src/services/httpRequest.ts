@@ -28,6 +28,7 @@ class HTTPRequest {
   protected async Patch(body: string) {
     return await this.Send("PATCH", `${this.BaseUrl}/${this.Resource}`, body);
   }
+  // end point http://localhost:8985/members/bills
   private async Send(method: Method, endpoint: string, body?: string) {
     const requestOptions = {
       method: method,

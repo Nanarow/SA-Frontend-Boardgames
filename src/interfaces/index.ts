@@ -2,7 +2,7 @@ interface Boardgame {
   id?: number;
   title: string;
   numberOfPlayers: string;
-  minAge: string;
+  minAge: number;
   playTime: number;
   genre: string;
   rentalPrice: number;
@@ -18,7 +18,10 @@ interface Bill {
   memberId: number;
   status: "paid" | "pending";
   total: number;
+  slip: string;
+  payAt: Date;
 }
+
 interface GameBill extends Bill {
   boardgameId: number;
   startDate: Date;
@@ -29,6 +32,7 @@ interface RoomBill extends Bill {
   roomId: number;
   startTime: Date;
   endTime: Date;
+  hour: number;
 }
 interface MemberBill extends Bill {
   memberTypeId: number;
@@ -42,6 +46,7 @@ interface Room {
 }
 interface RoomType {
   id: number;
+  name: string;
   capacity: number;
   price: number;
 }
@@ -49,23 +54,23 @@ interface User {
   id: number;
   firstName: string;
   lastName: string;
+  username: string;
   email: string;
   password: string;
   tel: string;
-  idCard: number;
 }
 
 interface Member {
   id: number;
   userId: number;
   memberTypeId: number;
-  point: number;
+  credit: number;
 }
 
 interface MemberType {
   id: number;
   name: string;
-  maxRoom: string;
+  maxRoomHours: number;
   maxBoardgames: string;
   price: string;
 }
