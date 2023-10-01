@@ -11,7 +11,7 @@ import {
   MemberBill,
 } from "../interfaces";
 
-const tempRoomType: RoomType[] = [
+export const tempRoomType: RoomType[] = [
   {
     id: 0,
     name: "",
