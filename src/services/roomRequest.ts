@@ -20,4 +20,7 @@ export class RoomBill extends HTTPRequest {
   public async CreateRoomBill(data: RoomBill) {
     return (await super.Post(JSON.stringify(data))) as RoomBill;
   }
+  public async UpdateRoomBill(data: RoomBill) {
+    return (await super.Patch(JSON.stringify(data))) as RoomBill;
+  }
 }

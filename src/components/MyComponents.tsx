@@ -13,14 +13,16 @@ import { MyTooltip } from "./custom/MyTooltip";
 import MyToggleButton from "./custom/MyToggleButton";
 import MyPagination from "./custom/MyPagination";
 import MyMenu from "./custom/MyMenu";
-import { Boardgame } from "../interfaces";
+import { Boardgame, Room } from "../interfaces";
 import { BoardgameRequest } from "../services/boardgameRequest";
+import { RoomRequest } from "../services/roomRequest";
 
 const boardgameRequest: BoardgameRequest = new BoardgameRequest();
+const roomRequest: RoomRequest = new RoomRequest();
 const bg1: Boardgame = {
     title: "game mai na ja",
     numberOfPlayers: "",
-    minAge: "",
+    minAge: 8,
     playTime: 0,
     genre: "",
     rentalPrice: 0,
@@ -34,7 +36,7 @@ const bg2: Boardgame = {
     id: 4,
     title: "game 2 na ja",
     numberOfPlayers: "",
-    minAge: "",
+    minAge: 8,
     playTime: 0,
     genre: "",
     rentalPrice: 0,
@@ -45,8 +47,10 @@ const bg2: Boardgame = {
     tutorial: ""
 }
 async function handleGet() {
-    const bgs: Boardgame[] = await boardgameRequest.GetBoardgames("filters=a&filters=nn&filters=o&limit=4&offset=0")
-    console.log(bgs)
+    // const bgs: Boardgame[] = await boardgameRequest.GetBoardgames("filters=a&filters=nn&filters=o&limit=4&offset=0")
+    // console.log(bgs)
+    const rooms: Room[] = await roomRequest.GetAllRoom()
+    console.log(rooms)
 }
 
 async function handleGetById(id: number) {

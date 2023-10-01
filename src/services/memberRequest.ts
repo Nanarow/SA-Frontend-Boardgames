@@ -1,4 +1,4 @@
-import { Member, MemberBill } from "../interfaces";
+import { Member, MemberBill, MemberType } from "../interfaces";
 import { API_URL, HTTPRequest } from "./httpRequest";
 
 export class MemberRequest extends HTTPRequest {
@@ -14,7 +14,16 @@ export class MemberBillRequest extends HTTPRequest {
   constructor() {
     super(API_URL, "members/bills");
   }
-  public async CreateMemberBill(id: number) {
-    return (await super.Find(id)) as MemberBill;
+  public async CreateMemberBill(data: MemberBill) {
+    return (await super.Post(JSON.stringify(data))) as MemberBill;
+  }
+}
+
+export class MemberTypeRequest extends HTTPRequest {
+  constructor() {
+    super(API_URL, "members/types");
+  }
+  public async GetAllMemberType() {
+    return (await super.Get()) as MemberType[];
   }
 }
