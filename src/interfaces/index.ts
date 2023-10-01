@@ -47,7 +47,7 @@ interface Room {
 interface RoomType {
   id: number;
   name: string;
-  capacity: number;
+  capacity: string;
   price: number;
 }
 interface User {
