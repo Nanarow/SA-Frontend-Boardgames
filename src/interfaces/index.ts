@@ -44,6 +44,15 @@ interface Room {
   name: string;
   state: "available" | "unavailable";
 }
+
+interface RoomWithRoomType {
+  id: number;
+  roomTypeId: number;
+  name: string;
+  state: "available" | "unavailable";
+  roomType: RoomType;
+}
+
 interface RoomType {
   id: number;
   name: string;
@@ -65,6 +74,14 @@ interface Member {
   userId: number;
   memberTypeId: number;
   credit: number;
+}
+
+interface MemberWithMemberType {
+  id: number;
+  userId: number;
+  memberTypeId: number;
+  credit: number;
+  memberType: MemberType;
 }
 
 interface MemberType {
