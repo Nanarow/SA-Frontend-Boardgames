@@ -70,8 +70,8 @@ interface Member {
 interface MemberType {
   id: number;
   name: string;
-  maxRoomHours: number;
-  maxBoardgames: string;
+  maxRoomHour: number;
+  maxBoardgame: number;
   price: string;
 }
 
