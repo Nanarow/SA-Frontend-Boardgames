@@ -3,46 +3,61 @@ type Method = "GET" | "OPTIONS" | "POST" | "PATCH" | "PUT" | "DELETE";
 const API_URL = "http://localhost:8985";
 class HTTPRequest {
   protected contentType: string = "application/json";
-  private BaseUrl!: string;
-  private Resource!: string;
-  public constructor(baseUrl: string, Resource: string) {
-    this.BaseUrl = baseUrl;
-    this.Resource = Resource;
+  private baseUrl!: string;
+  private resource!: string;
+
+  constructor(baseUrl: string, resource: string) {
+    this.baseUrl = baseUrl;
+    this.resource = resource;
   }
 
   protected async Get() {
-    return await this.Send("GET", `${this.BaseUrl}/${this.Resource}`);
+    return this.SendRequest("GET", this.GetEndpoint());
   }
-  protected async Find(id: number) {
-    return await this.Send("GET", `${this.BaseUrl}/${this.Resource}/${id}`);
+
+  protected async GetById(id: number) {
+    return this.SendRequest("GET", this.GetEndpoint(id));
   }
-  protected async Query(query: string) {
-    return await this.Send("GET", `${this.BaseUrl}/${this.Resource}?${query}`);
+
+  protected async GetByQuery(query: string) {
+    return this.SendRequest("GET", this.GetEndpoint(undefined, query));
   }
-  protected async Delete(id: number) {
-    return await this.Send("DELETE", `${this.BaseUrl}/${this.Resource}/${id}`);
+
+  protected async DeleteById(id: number) {
+    return this.SendRequest("DELETE", this.GetEndpoint(id));
   }
+
   protected async Post(body: string) {
-    return await this.Send("POST", `${this.BaseUrl}/${this.Resource}`, body);
+    return this.SendRequest("POST", this.GetEndpoint(), body);
   }
+
   protected async Patch(body: string) {
-    return await this.Send("PATCH", `${this.BaseUrl}/${this.Resource}`, body);
+    return this.SendRequest("PATCH", this.GetEndpoint(), body);
   }
-  // end point http://localhost:8985/members/bills
-  private async Send(method: Method, endpoint: string, body?: string) {
+
+  private async SendRequest(method: Method, endpoint: string, body?: string) {
     const requestOptions = {
-      method: method,
+      method,
       headers: {
         "Content-Type": this.contentType,
       },
-      body: body,
+      body,
     };
+
     const response = await fetch(endpoint, requestOptions);
     const result = await response.json();
+
     if (response.ok) {
       return result.data;
+    } else {
+      return result.error;
     }
-    return result.error;
+  }
+
+  private GetEndpoint(id?: number, query?: string): string {
+    return `${this.baseUrl}/${this.resource}
+    ${id !== undefined ? `/${id}` : ""}
+    ${query !== undefined ? `?${query}` : ""}`;
   }
 }
 

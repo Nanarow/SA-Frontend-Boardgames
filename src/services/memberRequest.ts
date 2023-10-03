@@ -6,7 +6,7 @@ export class MemberRequest extends HTTPRequest {
     super(API_URL, "members");
   }
   public async GetMember(id: number) {
-    return (await super.Find(id)) as Member;
+    return (await super.GetById(id)) as Member;
   }
 }
 

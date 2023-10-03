@@ -6,11 +6,11 @@ export class BoardgameRequest extends HTTPRequest {
     super(API_URL, "boardgames");
   }
   public async GetBoardgames(query: string) {
-    return (await super.Query(query)) as Boardgame[];
+    return (await super.GetByQuery(query)) as Boardgame[];
   }
 
   public async FindBoardgame(id: number) {
-    return (await super.Find(id)) as Boardgame;
+    return (await super.GetById(id)) as Boardgame;
   }
 
   public async CreateBoardgame(data: Boardgame) {
@@ -21,7 +21,7 @@ export class BoardgameRequest extends HTTPRequest {
   }
 
   public async DeleteBoardgame(id: number) {
-    return (await super.Delete(id)) as string;
+    return (await super.DeleteById(id)) as string;
   }
 }
 
@@ -29,14 +29,11 @@ export class GameBillRequest extends HTTPRequest {
   constructor() {
     super(API_URL, "boardgames/bills");
   }
-  public async getGameBillById(id: number) {
-    return (await super.Find(id)) as GameBill;
-  }
-  public async CreateGameBill(id: number) {
-    return (await super.Find(id)) as GameBill;
+  public async CreateGameBill(body: GameBill) {
+    return (await super.Post(JSON.stringify(body))) as GameBill;
   }
 
-  public async getBoardgameBill(id: number) {
-    return (await super.Find(id)) as GameBill;
+  public async getGameBillById(id: number) {
+    return (await super.GetById(id)) as GameBill;
   }
 }

@@ -9,7 +9,7 @@ export class RoomRequest extends HTTPRequest {
     return (await super.Get()) as Room[];
   }
   public async GetRoom(id: number) {
-    return (await super.Find(id)) as Room;
+    return (await super.GetById(id)) as Room;
   }
 }
 
