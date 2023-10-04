@@ -4,7 +4,7 @@ interface Boardgame {
   numberOfPlayers: string;
   minAge: number;
   playTime: number;
-  genre: string;
+  category: string;
   rentalPrice: number;
   quantityInStock: number;
   quantityInRental: number;
