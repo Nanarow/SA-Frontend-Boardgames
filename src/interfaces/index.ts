@@ -1,95 +1,95 @@
 interface Boardgame {
-  id?: number;
-  title: string;
-  numberOfPlayers: string;
-  minAge: number;
-  playTime: number;
-  category: string;
-  rentalPrice: number;
-  quantityInStock: number;
-  quantityInRental: number;
-  deposit: number;
-  src: string;
-  tutorial: string;
+  ID?: number;
+  Title: string;
+  NumberOfPlayers: string;
+  MinAge: number;
+  PlayTime: number;
+  Category: string;
+  RentalPrice: number;
+  QuantityInStock: number;
+  QuantityInRental: number;
+  Deposit: number;
+  Src: string;
+  Tutorial: string;
 }
 
 interface Bill {
-  id: number;
-  memberId: number;
-  status: "paid" | "pending";
-  total: number;
-  slip: string;
-  payAt: Date;
+  ID: number;
+  MemberID: number;
+  Status: "paid" | "pending";
+  Total: number;
+  Slip: string;
+  PayAt: Date;
 }
 
 interface GameBill extends Bill {
-  boardgameId: number;
-  startDate: Date;
-  endDate: Date;
-  returnStatus: "renting" | "returned";
+  BoardgameID: number;
+  StartDate: Date;
+  EndDate: Date;
+  ReturnStatus: "renting" | "returned";
 }
 interface RoomBill extends Bill {
-  roomId: number;
-  startTime: Date;
-  endTime: Date;
-  hour: number;
+  RoomID: number;
+  StartTime: Date;
+  EndTime: Date;
+  Hour: number;
 }
 interface MemberBill extends Bill {
-  memberTypeId: number;
+  MemberTypeID: number;
 }
 
 interface Room {
-  id: number;
-  roomTypeId: number;
-  name: string;
-  state: "available" | "unavailable";
+  ID: number;
+  RoomTypeID: number;
+  Name: string;
+  State: "available" | "unavailable";
 }
 
 interface RoomWithRoomType {
-  id: number;
-  roomTypeId: number;
-  name: string;
-  state: "available" | "unavailable";
-  roomType: RoomType;
+  ID: number;
+  RoomTypeID: number;
+  Name: string;
+  State: "available" | "unavailable";
+  RoomType: RoomType;
 }
 
 interface RoomType {
-  id: number;
-  name: string;
-  capacity: string;
-  price: number;
+  ID: number;
+  Name: string;
+  Capacity: string;
+  Price: number;
 }
 interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  username: string;
-  email: string;
-  password: string;
-  tel: string;
+  ID: number;
+  FirstName: string;
+  LastName: string;
+  UserName: string;
+  Email: string;
+  Password: string;
+  Tel: string;
 }
 
 interface Member {
-  id: number;
-  userId: number;
-  memberTypeId: number;
-  credit: number;
+  ID: number;
+  UserID: number;
+  MemberTypeID: number;
+  Credit: number;
 }
 
 interface MemberWithMemberType {
-  id: number;
-  userId: number;
-  memberTypeId: number;
-  credit: number;
-  memberType: MemberType;
+  ID: number;
+  UserID: number;
+  MemberTypeID: number;
+  Credit: number;
+  MemberType: MemberType;
 }
 
 interface MemberType {
-  id: number;
-  name: string;
-  maxRoomHour: number;
-  maxBoardgame: number;
-  price: string;
+  ID: number;
+  Name: string;
+  MaxRoomHour: number;
+  MaxBoardgame: number;
+  Price: number;
 }
 
 export type {
@@ -103,4 +103,5 @@ export type {
   Member,
   MemberType,
   MemberBill,
+  RoomWithRoomType,
 };

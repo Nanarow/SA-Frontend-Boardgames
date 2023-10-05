@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import MyComponents from './components/MyComponents';
+import MyComponents from './components/test/MyComponents';
 import BoardGames from './pages/BoardGames';
 import Rooms from './pages/Rooms';
 import Pricing from './pages/Pricing';
@@ -8,7 +8,7 @@ import NavBar from './components/NavBar';
 function App() {
   return (
     <Router >
-      <main className=" h-screen m-0 overflow-hidden">
+      <main className=" h-screen m-0 w-full overflow-hidden overscroll-none">
         <NavBar />
         <Routes>
           <Route path="/components" element=<MyComponents /> />

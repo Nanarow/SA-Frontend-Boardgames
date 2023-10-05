@@ -1,51 +1,51 @@
-import MyInput from "./custom/MyInput"
-import MyButton from "./custom/MyButton"
+import MyInput from "../custom/MyInput"
+import MyButton from "../custom/MyButton"
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { RiLoaderLine } from "react-icons/ri";
 import { BiLoaderCircle } from "react-icons/bi";
-import MyCheckbox from "./custom/MyCheckbox";
-import MySlider from "./custom/MySlider";
-import MyDialog from "./custom/MyDialog";
+import MyCheckbox from "../custom/MyCheckbox";
+import MySlider from "../custom/MySlider";
+import MyDialog from "../custom/MyDialog";
 import TestDialog from "./TestDialog";
 
 import { useRef } from "react";
-import { MyTooltip } from "./custom/MyTooltip";
-import MyToggleButton from "./custom/MyToggleButton";
-import MyPagination from "./custom/MyPagination";
-import MyMenu from "./custom/MyMenu";
-import { Boardgame, Room } from "../interfaces";
-import { BoardgameRequest } from "../services/boardgameRequest";
-import { RoomRequest } from "../services/roomRequest";
+import { MyTooltip } from "../custom/MyTooltip";
+import MyToggleButton from "../custom/MyToggleButton";
+import MyPagination from "../custom/MyPagination";
+import MyMenu from "../custom/MyMenu";
+import { Boardgame, Room } from "../../interfaces";
+import { BoardgameRequest } from "../../services/boardgameRequest";
+import { RoomRequest } from "../../services/roomRequest";
 
 const boardgameRequest: BoardgameRequest = new BoardgameRequest();
 const roomRequest: RoomRequest = new RoomRequest();
-const bg1: Boardgame = {
-    title: "game mai na ja",
-    numberOfPlayers: "",
-    minAge: 8,
-    playTime: 0,
-    category: "",
-    rentalPrice: 0,
-    quantityInStock: 0,
-    quantityInRental: 0,
-    deposit: 0,
-    src: "",
-    tutorial: ""
-}
-const bg2: Boardgame = {
-    id: 4,
-    title: "game 2 na ja",
-    numberOfPlayers: "",
-    minAge: 8,
-    playTime: 0,
-    category: "",
-    rentalPrice: 0,
-    quantityInStock: 0,
-    quantityInRental: 10,
-    deposit: 0,
-    src: "",
-    tutorial: ""
-}
+// const bg1: Boardgame = {
+//     Title: "game mai na ja",
+//     numberOfPlayers: "",
+//     minAge: 8,
+//     playTime: 0,
+//     category: "",
+//     rentalPrice: 0,
+//     quantityInStock: 0,
+//     quantityInRental: 0,
+//     deposit: 0,
+//     src: "",
+//     tutorial: ""
+// }
+// const bg2: Boardgame = {
+//     id: 4,
+//     Title: "game 2 na ja",
+//     numberOfPlayers: "",
+//     minAge: 8,
+//     playTime: 0,
+//     category: "",
+//     rentalPrice: 0,
+//     quantityInStock: 0,
+//     quantityInRental: 10,
+//     deposit: 0,
+//     src: "",
+//     tutorial: ""
+// }
 async function handleGet() {
     // const bgs: Boardgame[] = await boardgameRequest.GetBoardgames("filters=a&filters=nn&filters=o&limit=4&offset=0")
     // console.log(bgs)
@@ -93,7 +93,7 @@ const MyComponents = () => {
                 <MyButton label="Test Api delete" onClick={() => handleDelete(2)} />
                 <MyButton label="Test Api get" onClick={handleGet} />
                 <MyButton label="Test Api get by id" onClick={() => handleGetById(30)} />
-                <MyButton label="Test Api update" onClick={() => handleUpdate(bg2)} />
+                {/* <MyButton label="Test Api update" onClick={() => handleUpdate(bg2)} /> */}
                 <MyButton label="Test Api create" onClick={() => handleCreate()} />
             </div>
             <div className="flex flex-col bg-[#ffffff] w-[25%] h-screen ">

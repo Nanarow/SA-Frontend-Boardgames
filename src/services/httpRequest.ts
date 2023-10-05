@@ -55,9 +55,9 @@ class HTTPRequest {
   }
 
   private GetEndpoint(id?: number, query?: string): string {
-    return `${this.baseUrl}/${this.resource}
-    ${id !== undefined ? `/${id}` : ""}
-    ${query !== undefined ? `?${query}` : ""}`;
+    return `${this.baseUrl}/${this.resource}${
+      id !== undefined ? `/${id}` : ""
+    }${query !== undefined ? `?${query}` : ""}`;
   }
 }
 

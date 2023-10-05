@@ -1,27 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MyCheckbox from '../components/custom/MyCheckbox'
 import MyButton from '../components/custom/MyButton'
+import { MemberTypeRequest } from '../services/memberRequest'
+import { MemberType } from '../interfaces'
 
+const memberTypeRequest = new MemberTypeRequest()
+
+const hList = ["h-[450px]", "h-[500px]", "h-[550px]"]
 
 const Pricing = () => {
+    const [memberTypeList, setMemberTypeList] = useState<MemberType[]>([])
+
+    async function getAllPricing() {
+        setMemberTypeList(await memberTypeRequest.GetAllMemberType())
+    }
+
+    useEffect(() => {
+        getAllPricing()
+    }, [])
+
     return (
         <div className='flex flex-row justify-center gap-16 mt-[50px]'>
-            <div className='bg-while w-[300px] h-[450px] border-4 border-black shadow-solid-l rounded relative '>
-                <div className='flex flex-col justify-start '>
-                    <label className=' text-center text-2xl mt-6'>Classic</label>
-                    <label className=' font-bold text-5xl my-16 text-center'>Free!</label>
-                    <div className=' self-start ml-2 mt-2'>
-                        <MyCheckbox label='เช่าบอร์ดเกมได้ 1 เกม/ครั้ง' checked={true} />
-                        <div className='mt-4'>
-                            <MyCheckbox label='จองห้องได้ไม่เกิน 4 ชั่วโมง/วัน' checked={true} />
+            {memberTypeList.map((memberType, index) => (
+                <div className={`bg-while w-[300px] ${hList[index]} border-4 border-black shadow-solid-l rounded relative `} key={index}>
+                    <div className='flex flex-col justify-start '>
+                        <label className=' text-center text-2xl mt-6'>{memberType.Name}</label>
+                        <label className=' font-bold text-5xl my-16 text-center'>{memberType.Price == 0 ? "Free!" : `${memberType.Price}`} <label className=' text-sm font-medium'>/ month</label></label>
+                        <div className=' self-start ml-2 mt-2'>
+                            <MyCheckbox label={`เช่าบอร์ดเกมได้ ${memberType.MaxBoardgame} เกม/ครั้ง`} checked={true} />
+                            <div className='mt-4'>
+                                <MyCheckbox label={`จองห้องได้ไม่เกิน ${memberType.MaxRoomHour} ชั่วโมง/วัน`} checked={true} />
+                            </div>
+                        </div>
+                        <div className=' absolute mt-[40px] bottom-7 left-1/2 -translate-x-[50%]'>
+                            <MyButton label='Get Start' />
                         </div>
                     </div>
-                    <div className=' absolute mt-[40px] bottom-7 left-1/2 -translate-x-[50%]'>
-                        <MyButton label='Get Start' />
-                    </div>
                 </div>
-            </div>
-            <div className='bg-while w-[300px] h-[500px] border-4 border-black shadow-solid-l rounded relative'>
+            ))}
+
+            {/* <div className='bg-while w-[300px] h-[500px] border-4 border-black shadow-solid-l rounded relative'>
                 <div className='flex flex-col justify-start '>
                     <label className=' text-center text-2xl mt-6'>Sliver</label>
                     <label className=' font-bold text-5xl my-16 text-center'>199 ฿ <label className=' text-sm font-medium'>/ month</label></label>
@@ -65,7 +83,7 @@ const Pricing = () => {
                         <MyButton label='Get Start' />
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

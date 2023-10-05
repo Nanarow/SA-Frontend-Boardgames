@@ -1,4 +1,4 @@
-import { Room } from "../interfaces";
+import { Room, RoomWithRoomType } from "../interfaces";
 import { API_URL, HTTPRequest } from "./httpRequest";
 
 export class RoomRequest extends HTTPRequest {
@@ -6,7 +6,7 @@ export class RoomRequest extends HTTPRequest {
     super(API_URL, "rooms");
   }
   public async GetAllRoom() {
-    return (await super.Get()) as Room[];
+    return (await super.Get()) as RoomWithRoomType[];
   }
   public async GetRoom(id: number) {
     return (await super.GetById(id)) as Room;
