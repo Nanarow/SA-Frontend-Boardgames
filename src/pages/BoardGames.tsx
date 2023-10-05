@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBar from '../components/NavBar'
 import MyCheckbox from '../components/custom/MyCheckbox'
 import MyInput from '../components/custom/MyInput'
 import MyButton from '../components/custom/MyButton'

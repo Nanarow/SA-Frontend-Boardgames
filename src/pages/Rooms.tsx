@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBar from '../components/NavBar'
 import MyButton from '../components/custom/MyButton'
 const Rooms = () => {
     return (
