@@ -36,4 +36,8 @@ export class GameBillRequest extends HTTPRequest {
   public async getGameBillById(id: number) {
     return (await super.GetById(id)) as GameBill;
   }
+
+  public async GetGameBills(query: string) {
+    return (await super.GetByQuery(query)) as GameBill[];
+  }
 }

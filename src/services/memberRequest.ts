@@ -17,6 +17,10 @@ export class MemberBillRequest extends HTTPRequest {
   public async CreateMemberBill(data: MemberBill) {
     return (await super.Post(JSON.stringify(data))) as MemberBill;
   }
+
+  public async GetMemberBills(query: string) {
+    return (await super.GetByQuery(query)) as MemberBill[];
+  }
 }
 
 export class MemberTypeRequest extends HTTPRequest {

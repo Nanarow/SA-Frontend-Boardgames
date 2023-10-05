@@ -23,4 +23,8 @@ export class RoomBill extends HTTPRequest {
   public async UpdateRoomBill(data: RoomBill) {
     return (await super.Patch(JSON.stringify(data))) as RoomBill;
   }
+
+  public async GetRoomBills(query: string) {
+    return (await super.GetByQuery(query)) as RoomBill[];
+  }
 }
