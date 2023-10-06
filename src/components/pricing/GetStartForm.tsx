@@ -3,8 +3,7 @@ import MyInput from '../custom/MyInput'
 import DialogCloser from '../custom/DialogCloser'
 import MyButton from '../custom/MyButton'
 
-const RentForm = () => {
-
+const GetStartForm = () => {
     const formRef = useRef<HTMLFormElement | null>(null);
 
     const handleSubmit = () => {
@@ -15,11 +14,13 @@ const RentForm = () => {
     };
 
     return (
-        <form className=" flex flex-col" id='formTest' ref={formRef}>
+        <form className=" flex flex-col" ref={formRef}>
             <label>Start date</label>
             <MyInput type="date" name='startDate'></MyInput>
             <label>End date</label>
             <MyInput type="date" name='endDate'></MyInput>
+            <label>Hour</label>
+            <MyInput type="number" name='hour'></MyInput>
             <div className=" self-end flex flex-row items-center justify-center gap-4">
                 <DialogCloser>
                     <label>cancel</label>
@@ -27,9 +28,11 @@ const RentForm = () => {
                 <DialogCloser>
                     <MyButton label="Submit" onClick={handleSubmit} />
                 </DialogCloser>
+
             </div>
         </form>
+
     )
 }
 
-export default RentForm
+export default GetStartForm

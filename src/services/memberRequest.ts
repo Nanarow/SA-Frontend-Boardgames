@@ -1,4 +1,9 @@
-import { Member, MemberBill, MemberType } from "../interfaces";
+import {
+  Member,
+  MemberBill,
+  MemberType,
+  MemberWithMemberType,
+} from "../interfaces";
 import { API_URL, HTTPRequest } from "./httpRequest";
 
 export class MemberRequest extends HTTPRequest {
@@ -6,7 +11,7 @@ export class MemberRequest extends HTTPRequest {
     super(API_URL, "members");
   }
   public async GetMember(id: number) {
-    return (await super.GetById(id)) as Member;
+    return (await super.GetById(id)) as MemberWithMemberType;
   }
 }
 

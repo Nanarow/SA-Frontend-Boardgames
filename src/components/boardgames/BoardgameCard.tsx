@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Boardgame } from '../../interfaces'
-import { FaCircleQuestion, FaTrash } from 'react-icons/fa6'
+import { FaCircleQuestion } from 'react-icons/fa6'
 import MyButton from '../custom/MyButton'
 import MyDialog from '../custom/MyDialog'
 import RentForm from './RentForm'
@@ -29,8 +29,6 @@ const BoardgameCard: React.FC<BoardgameCardProps> = ({ boardgame }) => {
             <MyDialog content={<RentForm />} disableCloser={true}>
                 <MyButton label="Rent" className=" absolute bottom-2 right-2" />
             </MyDialog>
-
-
         </div>
     )
 }

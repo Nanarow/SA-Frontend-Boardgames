@@ -39,6 +39,7 @@ interface MemberBill extends Bill {
 }
 
 interface Room {
+  [x: string]: any;
   ID: number;
   RoomTypeID: number;
   Name: string;
