@@ -3,21 +3,37 @@ import { MemberWithMemberType } from '../interfaces'
 
 type MemberContextProps = {
     member: MemberWithMemberType | undefined,
-    setMember: React.Dispatch<React.SetStateAction<MemberWithMemberType | undefined>>
+    memberType: Role | undefined,
+    setMember: (member: MemberWithMemberType) => void
 }
+
+type Role = 'user' | 'admin'
 
 const MemberContext = createContext<MemberContextProps | null>(null)
 
 const MemberProvider = ({ children }: PropsWithChildren) => {
-    const [member, setMember] = useState<MemberWithMemberType>()
+    const [member, setMemberWithType] = useState<MemberWithMemberType>()
+    const [memberType, setMemberType] = useState<Role>()
+
+    function setMember(member: MemberWithMemberType) {
+        setMemberWithType(member)
+        if (member.MemberType.Name === "admin") {
+            setMemberType("admin")
+        } else {
+            setMemberType("user")
+        }
+    }
+
     return (
-        <MemberContext.Provider value={{ member, setMember }}>
+        <MemberContext.Provider value={{ member, memberType, setMember }}>
             {children}
         </MemberContext.Provider>
     )
 }
 
 export { MemberContext, MemberProvider }
+
+
 
 export function useMemberContext() {
     const context = useContext(MemberContext)

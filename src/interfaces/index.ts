@@ -14,7 +14,7 @@ interface Boardgame {
 }
 
 interface Bill {
-  ID: number;
+  ID?: number;
   MemberID: number;
   Status: "paid" | "pending";
   Total: number;

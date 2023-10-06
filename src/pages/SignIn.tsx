@@ -5,11 +5,11 @@ import { MemberRequest } from '../services/memberRequest'
 const memberRequest = new MemberRequest()
 
 const SignIn = () => {
-    const { setMember } = useMemberContext()
+    const { setMember, memberType } = useMemberContext()
     async function getMember() {
         const m = await memberRequest.GetMember(1)
         setMember(m)
-        console.log(m)
+        // console.log(m)
     }
 
     useEffect(() => {
@@ -17,7 +17,10 @@ const SignIn = () => {
     }, [])
 
     return (
-        <div>SignIn</div>
+        <div>SignIn
+            <button onClick={() => console.log(memberType)}>test</button>
+        </div>
+
     )
 }
 

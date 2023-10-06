@@ -6,6 +6,7 @@ import Pricing from './pages/Pricing';
 import NavBar from './components/NavBar';
 import { MemberProvider } from './contexts/MemberProvider';
 import SignIn from './pages/SignIn';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
             <Route path="/components" element=<MyComponents /> />
             <Route path="/boardgames" element=<BoardGames /> />
             <Route path="/rooms" element=<Rooms /> />
-            <Route path="/recent" element=<div>recent</div> />
             <Route path="/pricing" element=<Pricing /> />
+            <Route path="/profile" element=<Profile /> />
             <Route path="/*" element=<SignIn /> />
           </Routes>
         </MemberProvider>

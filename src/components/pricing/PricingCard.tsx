@@ -4,6 +4,7 @@ import MyCheckbox from '../custom/MyCheckbox'
 import { MemberType } from '../../interfaces'
 import MyDialog from '../custom/MyDialog'
 import GetStartForm from './GetStartForm'
+import PaymentForm from '../billing/PaymentForm'
 
 
 interface PricingCardProps {

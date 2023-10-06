@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import { Room } from '../../interfaces'
+import { Room, RoomWithRoomType } from '../../interfaces'
 import { FaCircleQuestion } from 'react-icons/fa6'
 import MyButton from '../custom/MyButton'
 import MyDialog from '../custom/MyDialog'
 
 import ReserveForm from './ReserveForm'
-interface RoomCardProps {
-    room: Room
+export interface RoomCardProps {
+    room: RoomWithRoomType
 }
 const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
     return (
@@ -18,7 +18,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
                 <label className=' text-2xl font-semibold ml-16 mt-4'>__.__</label>
             </div>
             <div className=' absolute bottom-2 right-2'>
-                <MyDialog content={<ReserveForm />} disableCloser={true}>
+                <MyDialog content={<ReserveForm room={room} />} disableCloser={true}>
                     <MyButton label='Reserve' />
                 </MyDialog>
 

@@ -1,4 +1,4 @@
-import { Room, RoomWithRoomType } from "../interfaces";
+import { Room, RoomBill, RoomWithRoomType } from "../interfaces";
 import { API_URL, HTTPRequest } from "./httpRequest";
 
 export class RoomRequest extends HTTPRequest {
@@ -13,7 +13,7 @@ export class RoomRequest extends HTTPRequest {
   }
 }
 
-export class RoomBill extends HTTPRequest {
+export class RoomBillRequest extends HTTPRequest {
   constructor() {
     super(API_URL, "rooms/bills");
   }
