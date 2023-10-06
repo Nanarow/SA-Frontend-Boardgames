@@ -8,8 +8,9 @@ import { useMemberContext } from '../../contexts/MemberProvider'
 import { RoomBillRequest } from '../../services/roomRequest'
 import { RoomBill } from '../../interfaces'
 import { RoomCardProps } from './RoomCard'
+import { formatDate } from '../../helper/utility'
 
-const roomBillRequest = new RoomBillRequest()
+
 const ReserveForm: React.FC<RoomCardProps> = ({ room }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
     const { member } = useMemberContext()
@@ -21,17 +22,18 @@ const ReserveForm: React.FC<RoomCardProps> = ({ room }) => {
         if (member) {
             const roomBill: RoomBill = {
                 RoomID: room.ID,
-                StartTime: new Date(`${formData.get("reserveDate")} ${formData.get("startTime")}`),
-                EndTime: new Date(`${formData.get("reserveDate")} ${formData.get("startTime")}`),
+                StartTime: formatDate(new Date(`${formData.get("reserveDate")} ${formData.get("startTime")}`)),
+                EndTime: formatDate(new Date(`${formData.get("reserveDate")} ${formData.get("startTime")}`)),
                 Hour: Number(formData.get("hour")),
                 MemberID: member.ID,
                 Status: 'pending',
                 Total: Number(formData.get("hour")) * room.RoomType.Price,
                 Slip: '',
-                PayAt: new Date()
+                PayAt: "",
             }
             setRoomBill(roomBill)
             console.log(roomBill)
+            const roomBillRequest = new RoomBillRequest()
             const newRoomBill = await roomBillRequest.CreateRoomBill(roomBill)
             console.log(newRoomBill)
         }

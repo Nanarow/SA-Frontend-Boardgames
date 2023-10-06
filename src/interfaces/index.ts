@@ -19,19 +19,19 @@ interface Bill {
   Status: "paid" | "pending";
   Total: number;
   Slip: string;
-  PayAt: Date;
+  PayAt: string;
 }
 
 interface GameBill extends Bill {
   BoardgameID: number;
-  StartDate: Date;
-  EndDate: Date;
-  ReturnStatus: "renting" | "returned";
+  StartDate: string;
+  EndDate: string;
+  ReturnStatus: "renting" | "returned" | "pending";
 }
 interface RoomBill extends Bill {
   RoomID: number;
-  StartTime: Date;
-  EndTime: Date;
+  StartTime: string;
+  EndTime: string;
   Hour: number;
 }
 interface MemberBill extends Bill {

@@ -23,7 +23,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ memberType }) => {
                 </div>
             </div>
             <div className=' absolute mt-[40px] bottom-7 left-1/2 -translate-x-[50%]'>
-                <MyDialog content={<GetStartForm />} disableCloser={true}>
+                <MyDialog content={<PaymentForm total={0} />} disableCloser={true}>
                     <MyButton label='Get Start' />
                 </MyDialog>
             </div>

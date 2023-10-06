@@ -16,9 +16,9 @@ const GetStartForm = () => {
     return (
         <form className=" flex flex-col" ref={formRef}>
             <label>Start date</label>
-            <MyInput type="date" name='startDate'></MyInput>
+            <MyInput type="time" name='startDate'></MyInput>
             <label>End date</label>
-            <MyInput type="date" name='endDate'></MyInput>
+            <MyInput type="datetime-local" name='endDate'></MyInput>
             <label>Hour</label>
             <MyInput type="number" name='hour'></MyInput>
             <div className=" self-end flex flex-row items-center justify-center gap-4">

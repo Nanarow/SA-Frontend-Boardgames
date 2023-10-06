@@ -29,7 +29,7 @@ const BoardGames: React.FC<IBoard> = ({ role = "user" }) => {
                 <div className=" h-[90%] flex flex-wrap mx-2 justify-between gap-y-2 mb-2">
                     {boardgameList.map((boardgame, index) => <BoardgameCard boardgame={boardgame} key={index} />)}
                 </div>
-                <MyPagination />
+                {/* <MyPagination /> */}
             </section>
         </section>
     )
