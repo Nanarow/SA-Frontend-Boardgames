@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import { Boardgame } from '../../interfaces'
 import { FaCircleQuestion, FaTrash } from 'react-icons/fa6'
-import DialogCloser from '../custom/DialogCloser'
 import MyButton from '../custom/MyButton'
 import MyDialog from '../custom/MyDialog'
-import MyInput from '../custom/MyInput'
 import RentForm from './RentForm'
 
 interface BoardgameCardProps {

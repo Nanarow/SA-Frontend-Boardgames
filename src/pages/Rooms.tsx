@@ -9,7 +9,7 @@ const roomRequest = new RoomRequest()
 const Rooms = () => {
     const [rooms, setRooms] = useState<RoomWithRoomType[]>([])
     async function getAllRoom() {
-        setRooms(await roomRequest.GetAllRoom())
+        setRooms(await roomRequest.GetAllRoom("limit=4"))
     }
     useEffect(() => {
         getAllRoom()

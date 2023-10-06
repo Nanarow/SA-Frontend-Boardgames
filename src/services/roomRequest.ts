@@ -5,8 +5,8 @@ export class RoomRequest extends HTTPRequest {
   constructor() {
     super(API_URL, "rooms");
   }
-  public async GetAllRoom() {
-    return (await super.Get()) as RoomWithRoomType[];
+  public async GetAllRoom(query: string) {
+    return (await super.GetByQuery(query)) as RoomWithRoomType[];
   }
   public async GetRoom(id: number) {
     return (await super.GetById(id)) as Room;

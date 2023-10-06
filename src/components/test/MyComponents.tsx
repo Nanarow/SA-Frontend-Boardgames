@@ -49,8 +49,8 @@ const roomRequest: RoomRequest = new RoomRequest();
 async function handleGet() {
     // const bgs: Boardgame[] = await boardgameRequest.GetBoardgames("filters=a&filters=nn&filters=o&limit=4&offset=0")
     // console.log(bgs)
-    const rooms: Room[] = await roomRequest.GetAllRoom()
-    console.log(rooms)
+    // const rooms: Room[] = await roomRequest.GetAllRoom()
+    // console.log(rooms)
 }
 
 async function handleGetById(id: number) {

@@ -104,4 +104,5 @@ export type {
   MemberType,
   MemberBill,
   RoomWithRoomType,
+  MemberWithMemberType,
 };
