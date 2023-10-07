@@ -5,7 +5,7 @@ import MyButton from '../custom/MyButton'
 import MyDialog from '../custom/MyDialog'
 import RentForm from './RentForm'
 
-interface BoardgameCardProps {
+export interface BoardgameCardProps {
     boardgame: Boardgame
 }
 
@@ -26,7 +26,7 @@ const BoardgameCard: React.FC<BoardgameCardProps> = ({ boardgame }) => {
                 <FaCircleQuestion />
             </div>
 
-            <MyDialog content={<RentForm />} disableCloser={true}>
+            <MyDialog content={<RentForm boardgame={boardgame} />} disableCloser={true}>
                 <MyButton label="Rent" className=" absolute bottom-2 right-2" />
             </MyDialog>
         </div>

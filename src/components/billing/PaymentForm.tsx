@@ -5,18 +5,17 @@ import MyInput from '../custom/MyInput';
 import QRcode from '../../assets/QRCode.jpg'
 import { useDialogCloser } from '../custom/MyDialog';
 import { useMemberContext } from '../../contexts/MemberProvider';
-import { Boardgame, MemberType, RoomBill } from '../../interfaces';
-import { UpdateRoomBill } from './bills';
+import { Boardgame, GameBill, MemberType, RoomBill } from '../../interfaces';
+import { UpdateGameBill, UpdateRoomBill } from './bills';
 import { useNavigate } from 'react-router-dom';
 
 interface PaymentProps {
-    memberType?: MemberType
-    boardgame?: Boardgame
     roomBill?: RoomBill
+    gameBill?: GameBill
 
 }
 
-const PaymentForm: React.FC<PaymentProps> = ({ memberType, boardgame, roomBill }) => {
+const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
     const { setDialogOpen } = useDialogCloser()
     const { member } = useMemberContext()
@@ -32,6 +31,10 @@ const PaymentForm: React.FC<PaymentProps> = ({ memberType, boardgame, roomBill }
                     await UpdateRoomBill(formData, roomBill)
                     navigate("/loading/pending")
                 }
+                if (gameBill) {
+                    await UpdateGameBill(formData, gameBill)
+                    navigate("/loading/pending")
+                }
             }
         }
         setDialogOpen(false)
@@ -40,6 +43,9 @@ const PaymentForm: React.FC<PaymentProps> = ({ memberType, boardgame, roomBill }
     useEffect(() => {
         if (roomBill) {
             setTotal(roomBill.Total)
+        }
+        if (gameBill) {
+            setTotal(gameBill.Total)
         }
     }, [])
 

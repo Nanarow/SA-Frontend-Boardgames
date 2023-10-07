@@ -17,7 +17,7 @@ import { GameBillRequest } from "../../services/boardgameRequest";
 import { MemberBillRequest } from "../../services/memberRequest";
 import { RoomBillRequest } from "../../services/roomRequest";
 
-function CreateGameBill(
+async function CreateGameBill(
   formData: FormData,
   member: MemberWithMemberType,
   boardgame: Boardgame
@@ -35,7 +35,7 @@ function CreateGameBill(
     Status: "pending",
     Total: days * boardgame.RentalPrice,
   };
-  gameBill.CreateGameBill(data);
+  return await gameBill.CreateGameBill(data);
 }
 
 async function UpdateGameBill(formData: FormData, gameBill: GameBill) {

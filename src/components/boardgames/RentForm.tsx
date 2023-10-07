@@ -2,15 +2,24 @@ import React, { useRef } from 'react'
 import MyInput from '../custom/MyInput'
 import DialogCloser from '../custom/DialogCloser'
 import MyButton from '../custom/MyButton'
+import { CreateGameBill } from '../billing/bills'
+import { BoardgameCardProps } from './BoardgameCard'
+import { useDialogCloser } from '../custom/MyDialog'
+import { useMemberContext } from '../../contexts/MemberProvider'
 
-const RentForm = () => {
+const RentForm: React.FC<BoardgameCardProps> = ({ boardgame }) => {
 
     const formRef = useRef<HTMLFormElement | null>(null);
+    const { member } = useMemberContext()
+    const { setDialogOpen } = useDialogCloser()
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (formRef.current) {
-            const formData = new FormData(formRef.current);
-            console.log(formData)
+            if (member) {
+                const formData = new FormData(formRef.current);
+                await CreateGameBill(formData, member, boardgame)
+                setDialogOpen(false)
+            }
         }
     };
 
