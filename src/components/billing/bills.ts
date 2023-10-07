@@ -45,6 +45,7 @@ async function CreateMemberBill(
   member: MemberWithMemberType,
   memberType: MemberType
 ) {
+  console.log("start create");
   const memberBill = new MemberBillRequest();
   const fileSlip = formData.get("fileSlip");
   if (fileSlip instanceof File) {

@@ -3,40 +3,49 @@ import DialogCloser from '../custom/DialogCloser';
 import MyButton from '../custom/MyButton';
 import MyInput from '../custom/MyInput';
 import QRcode from '../../assets/QRCode.jpg'
-import { Base64ToUrl, ImageToBase64 } from '../../helper/utility';
+import { useDialogCloser } from '../custom/MyDialog';
+import { CreateMemberBill } from './bills';
+import { useMemberContext } from '../../contexts/MemberProvider';
+import { MemberType } from '../../interfaces';
 
 interface PaymentProps {
     total: number
+    memberType?: MemberType
 }
 
-const PaymentForm: React.FC<PaymentProps> = ({ total }) => {
+const PaymentForm: React.FC<PaymentProps> = ({ total, memberType }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
-
-    const handleSubmit = async () => {
+    const { setDialogOpen } = useDialogCloser()
+    const { member } = useMemberContext()
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         if (formRef.current) {
-            const formData = new FormData(formRef.current);
-            const data = formData.get("upload")
-            if (data instanceof File) {
-                const base64 = await ImageToBase64(data)
-                console.log(base64)
-                console.log(Base64ToUrl(base64))
+            if (member) {
+                if (memberType) {
+                    const formData = new FormData(formRef.current);
+                    console.log(formData)
+                    await CreateMemberBill(formData, member, memberType)
+                } else {
+                    console.log("type error")
+                }
+            } else {
+                console.log("member error")
             }
-            console.log(formData)
+
         }
+        // setDialogOpen(false)
     };
     return (
-        <form className=" flex flex-col" ref={formRef}>
+        <form className=" flex flex-col" ref={formRef} onSubmit={(e) => { handleSubmit(e) }}>
             <img src={QRcode} className=" h-64 object-contain"></img>
             <label>Total {total} ฿</label>
             <label>Upload slip</label>
-            <MyInput type="file" name='upload' accept="image/*"></MyInput>
+            <MyInput type="file" name='fileSlip' accept="image/*"></MyInput>
             <div className=" self-end flex flex-row items-center justify-center gap-4">
                 <DialogCloser>
                     <label>cancel</label>
                 </DialogCloser>
-                <DialogCloser>
-                    <MyButton label="Submit" onClick={handleSubmit} />
-                </DialogCloser>
+                <MyButton label="Submit" type='submit' />
             </div>
         </form>
     )

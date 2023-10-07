@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { FaXmark } from 'react-icons/fa6';
 import MyButton from './MyButton';
@@ -8,11 +8,24 @@ interface IDialog {
     children?: ReactNode
     disableCloser?: boolean;
 }
+type IDialogContext = {
+    dialogOpen: boolean
+    setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+const DialogContext = createContext<IDialogContext | null>(null);
 
+export function useDialogCloser() {
+    const context = useContext(DialogContext)
+    if (!context) {
+        throw new Error("useMemberContext must be used within a MemberProvider")
+    }
+    return context
+}
 const MyDialog = (props: IDialog) => {
+    const [dialogOpen, setDialogOpen] = useState(false)
     return (
 
-        <Dialog.Root>
+        <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
             <Dialog.Trigger asChild>
                 {props.children}
             </Dialog.Trigger>
@@ -28,7 +41,10 @@ const MyDialog = (props: IDialog) => {
                         <Dialog.Description className="mt-[10px] mb-5 text-[15px] leading-normal">
                             Make changes to your profile here. Click save when you're done.
                         </Dialog.Description> */}
-                    {props.content}
+                    <DialogContext.Provider value={{ dialogOpen, setDialogOpen }}>
+                        {props.content}
+                    </DialogContext.Provider>
+
                     {
                         props.disableCloser ? null :
                             <DialogCloser>

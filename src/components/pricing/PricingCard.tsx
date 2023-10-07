@@ -5,12 +5,14 @@ import { MemberType } from '../../interfaces'
 import MyDialog from '../custom/MyDialog'
 import GetStartForm from './GetStartForm'
 import PaymentForm from '../billing/PaymentForm'
+import { useMemberContext } from '../../contexts/MemberProvider'
 
 
 interface PricingCardProps {
     memberType: MemberType
 }
 const PricingCard: React.FC<PricingCardProps> = ({ memberType }) => {
+    const { member } = useMemberContext()
     return (
 
         <div className='flex flex-col justify-start '>
@@ -22,11 +24,13 @@ const PricingCard: React.FC<PricingCardProps> = ({ memberType }) => {
                     <MyCheckbox label={`จองห้องได้ไม่เกิน ${memberType.MaxRoomHour} ชั่วโมง/วัน`} checked={true} />
                 </div>
             </div>
-            <div className=' absolute mt-[40px] bottom-7 left-1/2 -translate-x-[50%]'>
-                <MyDialog content={<PaymentForm total={0} />} disableCloser={true}>
-                    <MyButton label='Get Start' />
-                </MyDialog>
-            </div>
+            {
+                (member) ? (member.MemberTypeID === memberType.ID) ? null : (<div className=' absolute mt-[40px] bottom-7 left-1/2 -translate-x-[50%]'>
+                    <MyDialog content={<PaymentForm total={0} memberType={memberType} />} disableCloser={true}>
+                        <MyButton label='Get Start' />
+                    </MyDialog>
+                </div>) : null
+            }
 
         </div>
 
