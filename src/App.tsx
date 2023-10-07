@@ -7,6 +7,8 @@ import NavBar from './components/NavBar';
 import { MemberProvider } from './contexts/MemberProvider';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
+import Pending from './pages/Pending';
+import Loading from './pages/Loading';
 
 function App() {
   return (
@@ -20,7 +22,9 @@ function App() {
             <Route path="/rooms" element=<Rooms /> />
             <Route path="/pricing" element=<Pricing /> />
             <Route path="/profile" element=<Profile /> />
+            <Route path="/pending" element=<Pending /> />
             <Route path="/*" element=<SignIn /> />
+            <Route path="/loading/:page" element=<Loading /> />
           </Routes>
         </MemberProvider>
       </main>

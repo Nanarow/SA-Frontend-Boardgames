@@ -2,53 +2,37 @@ import React, { useRef, useState } from 'react'
 import MyInput from '../custom/MyInput'
 import DialogCloser from '../custom/DialogCloser'
 import MyButton from '../custom/MyButton'
-import PaymentForm from '../billing/PaymentForm'
-import MyDialog from '../custom/MyDialog'
+import MyDialog, { useDialogCloser } from '../custom/MyDialog'
 import { useMemberContext } from '../../contexts/MemberProvider'
-import { RoomBillRequest } from '../../services/roomRequest'
-import { RoomBill } from '../../interfaces'
 import { RoomCardProps } from './RoomCard'
-import { formatDate } from '../../helper/utility'
+import { CreateRoomBill } from '../billing/bills'
+import { RoomBill } from '../../interfaces'
+import PaymentForm from '../billing/PaymentForm'
+
 
 
 const ReserveForm: React.FC<RoomCardProps> = ({ room }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
     const { member } = useMemberContext()
-
+    const { setDialogOpen } = useDialogCloser()
     const [roomBill, setRoomBill] = useState<RoomBill>()
 
 
-    async function createBill(formData: FormData) {
-        if (member) {
-            const roomBill: RoomBill = {
-                RoomID: room.ID,
-                StartTime: formatDate(new Date(`${formData.get("reserveDate")} ${formData.get("startTime")}`)),
-                EndTime: formatDate(new Date(`${formData.get("reserveDate")} ${formData.get("startTime")}`)),
-                Hour: Number(formData.get("hour")),
-                MemberID: member.ID,
-                Status: 'pending',
-                Total: Number(formData.get("hour")) * room.RoomType.Price,
-                Slip: '',
-                PayAt: "",
-            }
-            setRoomBill(roomBill)
-            console.log(roomBill)
-            const roomBillRequest = new RoomBillRequest()
-            const newRoomBill = await roomBillRequest.CreateRoomBill(roomBill)
-            console.log(newRoomBill)
-        }
-    }
-
-    const handleSubmit = () => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         if (formRef.current) {
-            const formData = new FormData(formRef.current);
-            createBill(formData)
-            //console.log(formData)
+            if (member) {
+                const formData = new FormData(formRef.current);
+                const data = await CreateRoomBill(formData, member, room)
+                setRoomBill(data)
+                setDialogOpen(false)
+            }
         }
+
     };
 
     return (
-        <form className=" flex flex-col" ref={formRef}>
+        <form className=" flex flex-col" ref={formRef} onSubmit={handleSubmit}>
             <label>Reserve date</label>
             <MyInput type="date" name='reserveDate'></MyInput>
             <label>Start time</label>
@@ -59,12 +43,10 @@ const ReserveForm: React.FC<RoomCardProps> = ({ room }) => {
                 <DialogCloser>
                     <label>cancel</label>
                 </DialogCloser>
-                <DialogCloser>
-                    <MyDialog content={<PaymentForm total={(roomBill?.Total) ? roomBill.Total : 0} />} disableCloser={true}>
-                        <MyButton label="Submit" onClick={handleSubmit} />
-                    </MyDialog>
-                    {/* <MyButton label="Submit" onClick={handleSubmit} /> */}
-                </DialogCloser>
+                <MyButton label="Submit" type="submit" />
+                {/* <MyDialog content={<PaymentForm roomBill={roomBill} />} disableCloser={true} open={open}>
+
+                </MyDialog> */}
             </div>
         </form>
     )

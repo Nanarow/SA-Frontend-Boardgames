@@ -33,6 +33,10 @@ export class GameBillRequest extends HTTPRequest {
     return (await super.Post(JSON.stringify(body))) as GameBill;
   }
 
+  public async UpdateGameBill(body: GameBill) {
+    return (await super.Patch(JSON.stringify(body))) as GameBill;
+  }
+
   public async getGameBillById(id: number) {
     return (await super.GetById(id)) as GameBill;
   }

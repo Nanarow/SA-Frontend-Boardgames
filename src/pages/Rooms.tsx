@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import MyCheckbox from '../components/custom/MyCheckbox'
-import MyButton from '../components/custom/MyButton'
+import { useEffect, useState } from 'react'
 import { RoomRequest } from '../services/roomRequest'
-import { Room, RoomWithRoomType } from '../interfaces'
-import MyDialog from '../components/custom/MyDialog'
-import ReserveForm from '../components/rooms/ReserveForm'
+import { RoomWithRoomType } from '../interfaces'
 import RoomCard from '../components/rooms/RoomCard'
 
 

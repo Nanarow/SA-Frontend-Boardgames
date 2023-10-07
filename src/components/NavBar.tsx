@@ -1,5 +1,5 @@
 import MyButton from './custom/MyButton'
-import { FaHouseChimney, FaUser } from 'react-icons/fa6'
+import { FaHouseChimney, FaUser, FaWallet } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom';
 import MyMenu from './custom/MyMenu';
 
@@ -16,6 +16,9 @@ const NavBar = () => {
             </div>
             <div className=" grow">
                 <MyMenu items={["Board Games", "Rooms", "Pricing"]} className=" w-[480px]" defaultValue="Board Games" onValueChange={(page) => onPageChange(page)} />
+            </div>
+            <div className="mx-4 grow flex flex-col">
+                <MyButton leftIcon={<FaWallet />} className="max-w-[80px]" onClick={() => onPageChange("pending")} />
             </div>
             <div className="mx-4 grow flex flex-col">
                 <MyButton leftIcon={<FaUser />} className="max-w-[80px]" onClick={() => onPageChange("profile")} />

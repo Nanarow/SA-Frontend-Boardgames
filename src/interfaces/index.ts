@@ -18,20 +18,20 @@ interface Bill {
   MemberID: number;
   Status: "paid" | "pending";
   Total: number;
-  Slip: string;
-  PayAt: string;
+  Slip?: string;
+  PayDate?: Date;
 }
 
 interface GameBill extends Bill {
   BoardgameID: number;
-  StartDate: string;
-  EndDate: string;
+  StartDate: Date;
+  EndDate: Date;
   ReturnStatus: "renting" | "returned" | "pending";
 }
 interface RoomBill extends Bill {
   RoomID: number;
-  StartTime: string;
-  EndTime: string;
+  StartTime: Date;
+  EndTime: Date;
   Hour: number;
 }
 interface MemberBill extends Bill {
@@ -39,7 +39,6 @@ interface MemberBill extends Bill {
 }
 
 interface Room {
-  [x: string]: any;
   ID: number;
   RoomTypeID: number;
   Name: string;

@@ -34,13 +34,13 @@ export function formatDate(date: Date) {
       padTo2Digits(date.getMonth() + 1),
       padTo2Digits(date.getDate()),
     ].join("-") +
-    " " +
+    "T" +
     [
       padTo2Digits(date.getHours()),
       padTo2Digits(date.getMinutes()),
       padTo2Digits(date.getSeconds()),
     ].join(":") +
-    "+07:00"
+    "Z07:00"
   );
 }
 

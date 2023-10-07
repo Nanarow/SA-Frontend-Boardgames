@@ -28,16 +28,31 @@ function CreateGameBill(
   const { days } = getTimeDifference(startDate, endDate);
   const data: GameBill = {
     BoardgameID: boardgame.ID!,
-    StartDate: formatDate(startDate),
-    EndDate: formatDate(endDate),
+    StartDate: startDate,
+    EndDate: endDate,
     ReturnStatus: "pending",
     MemberID: member.ID,
     Status: "pending",
     Total: days * boardgame.RentalPrice,
-    Slip: "",
-    PayAt: "",
   };
   gameBill.CreateGameBill(data);
+}
+
+async function UpdateGameBill(formData: FormData, gameBill: GameBill) {
+  const gameBillRequest = new GameBillRequest();
+  const fileSlip = formData.get("fileSlip");
+  if (fileSlip instanceof File) {
+    const base64 = await ImageToBase64(fileSlip);
+    const payDate = new Date();
+    const data: GameBill = {
+      ...gameBill,
+      ReturnStatus: "renting",
+      Status: "paid",
+      Slip: base64,
+      PayDate: payDate,
+    };
+    gameBillRequest.UpdateGameBill(data);
+  }
 }
 
 async function CreateMemberBill(
@@ -45,25 +60,24 @@ async function CreateMemberBill(
   member: MemberWithMemberType,
   memberType: MemberType
 ) {
-  console.log("start create");
   const memberBill = new MemberBillRequest();
   const fileSlip = formData.get("fileSlip");
   if (fileSlip instanceof File) {
     const base64 = await ImageToBase64(fileSlip);
-    const payAt = formatDate(new Date());
+    const payDate = new Date();
     const data: MemberBill = {
       MemberTypeID: memberType.ID,
       MemberID: member.ID,
       Status: "paid",
       Total: memberType.Price,
       Slip: base64,
-      PayAt: payAt,
+      PayDate: payDate,
     };
-    memberBill.CreateMemberBill(data);
+    await memberBill.CreateMemberBill(data);
   }
 }
 
-async function CreateRoomBill(
+function CreateRoomBill(
   formData: FormData,
   member: MemberWithMemberType,
   room: RoomWithRoomType
@@ -76,16 +90,36 @@ async function CreateRoomBill(
   const endDate = addTimeToDate(startDate, { hours: hours });
   const roomBill: RoomBill = {
     RoomID: room.ID,
-    StartTime: formatDate(startDate),
-    EndTime: formatDate(endDate),
+    StartTime: startDate,
+    EndTime: endDate,
     Hour: Number(formData.get("hour")),
     MemberID: member.ID,
     Status: "pending",
     Total: hours * room.RoomType.Price,
-    Slip: "",
-    PayAt: "",
   };
-  roomBillRequest.CreateRoomBill(roomBill);
+  return roomBillRequest.CreateRoomBill(roomBill);
 }
 
-export { CreateGameBill, CreateRoomBill, CreateMemberBill };
+async function UpdateRoomBill(formData: FormData, roomBill: RoomBill) {
+  const roomBillRequest = new RoomBillRequest();
+  const fileSlip = formData.get("fileSlip");
+  if (fileSlip instanceof File) {
+    const base64 = await ImageToBase64(fileSlip);
+    const payDate = new Date();
+    const data: RoomBill = {
+      ...roomBill,
+      Status: "paid",
+      Slip: base64,
+      PayDate: payDate,
+    };
+    roomBillRequest.UpdateRoomBill(data);
+  }
+}
+
+export {
+  CreateGameBill,
+  CreateRoomBill,
+  CreateMemberBill,
+  UpdateGameBill,
+  UpdateRoomBill,
+};

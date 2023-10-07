@@ -1,9 +1,9 @@
-import { ReactNode, createContext, useContext, useState } from 'react';
+import React, { ReactNode, createContext, useContext, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { FaXmark } from 'react-icons/fa6';
 import MyButton from './MyButton';
 import DialogCloser from './DialogCloser';
-interface IDialog {
+interface IDialog extends Dialog.DialogProps {
     content: JSX.Element
     children?: ReactNode
     disableCloser?: boolean;
@@ -21,13 +21,13 @@ export function useDialogCloser() {
     }
     return context
 }
-const MyDialog = (props: IDialog) => {
+const MyDialog: React.FC<IDialog> = ({ children, content, disableCloser, ...dialogProps }) => {
     const [dialogOpen, setDialogOpen] = useState(false)
     return (
 
-        <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
+        <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen} {...dialogProps}>
             <Dialog.Trigger asChild>
-                {props.children}
+                {children}
             </Dialog.Trigger>
             <Dialog.Portal>
                 <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 bg-black/50" />
@@ -42,11 +42,11 @@ const MyDialog = (props: IDialog) => {
                             Make changes to your profile here. Click save when you're done.
                         </Dialog.Description> */}
                     <DialogContext.Provider value={{ dialogOpen, setDialogOpen }}>
-                        {props.content}
+                        {content}
                     </DialogContext.Provider>
 
                     {
-                        props.disableCloser ? null :
+                        disableCloser ? null :
                             <DialogCloser>
                                 <div className="absolute top-[0px] right-[0px]">
                                     <MyButton leftIcon={<FaXmark />} />
