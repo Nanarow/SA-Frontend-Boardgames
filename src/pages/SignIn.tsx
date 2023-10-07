@@ -7,7 +7,7 @@ const memberRequest = new MemberRequest()
 const SignIn = () => {
     const { setMember, memberType } = useMemberContext()
     async function getMember() {
-        const m = await memberRequest.GetMember(1)
+        const m = await memberRequest.GetMember(4)
         setMember(m)
         // console.log(m)
     }

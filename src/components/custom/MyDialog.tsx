@@ -3,10 +3,12 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { FaXmark } from 'react-icons/fa6';
 import MyButton from './MyButton';
 import DialogCloser from './DialogCloser';
+import { twMerge } from 'tailwind-merge';
 interface IDialog extends Dialog.DialogProps {
     content: JSX.Element
     children?: ReactNode
     disableCloser?: boolean;
+    className?: string;
 }
 type IDialogContext = {
     dialogOpen: boolean
@@ -21,7 +23,7 @@ export function useDialogCloser() {
     }
     return context
 }
-const MyDialog: React.FC<IDialog> = ({ children, content, disableCloser, ...dialogProps }) => {
+const MyDialog: React.FC<IDialog> = ({ children, content, disableCloser, className, ...dialogProps }) => {
     const [dialogOpen, setDialogOpen] = useState(false)
     return (
 
@@ -31,7 +33,7 @@ const MyDialog: React.FC<IDialog> = ({ children, content, disableCloser, ...dial
             </Dialog.Trigger>
             <Dialog.Portal>
                 <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 bg-black/50" />
-                <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[4px] bg-white p-[25px] border-2 shadow-solid-l border-black"
+                <Dialog.Content className={twMerge("data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[4px] bg-white p-[25px] border-2 shadow-solid-l border-black ", className)}
                     onInteractOutside={(event) => {
                         event.preventDefault();
                     }}>

@@ -3,10 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const Loading = () => {
     const navigate = useNavigate();
-    const routeParams = useParams();
+    const { page } = useParams();
     useEffect(() => {
-        console.log(`Loading... ${routeParams.page}`);
-        navigate(`/${routeParams.page}`)
+        console.log(`Loading... ${page}`);
+        navigate(`/${page}`)
     }, [])
 
     return (

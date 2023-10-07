@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { Room, RoomWithRoomType } from '../../interfaces'
-import { FaCircleQuestion } from 'react-icons/fa6'
+import { RoomWithRoomType } from '../../interfaces'
 import MyButton from '../custom/MyButton'
 import MyDialog from '../custom/MyDialog'
 

@@ -19,7 +19,7 @@ const MyInput = forwardRef<HTMLInputElement, IInput>(({
     return (
         <div className="flex flex-row items-center relative">
             {leftIcon && <span className="absolute w-6 h-6 flex items-center justify-center ml-2">{leftIcon}</span>}
-            <input className={twMerge("rounded shadow-solid-s border-2 focus:outline-none focus:border-sky-500 py-1 mx-1 my-1 pl-2 pr-2 max-w-m-1 grow",
+            <input className={twMerge("rounded shadow-solid-s border-2 focus:outline-none focus:border-sky-500 py-1 mx-1 my-1 pl-2 pr-2 max-w-m-1 grow ",
                 className, leftIcon && "pl-7",
                 (state === "error" ? "border-red-500" : "border-black"))}
                 {...inputProps}

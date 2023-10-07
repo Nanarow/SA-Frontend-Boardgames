@@ -4,18 +4,24 @@ import BoardGames from './pages/BoardGames';
 import Rooms from './pages/Rooms';
 import Pricing from './pages/Pricing';
 import NavBar from './components/NavBar';
-import { MemberProvider } from './contexts/MemberProvider';
+import { MemberProvider, useMemberContext } from './contexts/MemberProvider';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
 import Pending from './pages/Pending';
 import Loading from './pages/Loading';
 
 function App() {
+  const { memberType } = useMemberContext()
   return (
     <Router >
       <main className=" h-screen m-0 w-full overflow-hidden overscroll-none">
-        <MemberProvider>
-          <NavBar />
+        <NavBar />
+        {(memberType === "admin") ? <Routes>
+          <Route path="/components" element=<MyComponents /> />
+          <Route path="/boardgames" element=<BoardGames /> />
+          <Route path="/*" element=<SignIn /> />
+          <Route path="/loading/:page" element=<Loading /> />
+        </Routes> :
           <Routes>
             <Route path="/components" element=<MyComponents /> />
             <Route path="/boardgames" element=<BoardGames /> />
@@ -25,8 +31,7 @@ function App() {
             <Route path="/pending" element=<Pending /> />
             <Route path="/*" element=<SignIn /> />
             <Route path="/loading/:page" element=<Loading /> />
-          </Routes>
-        </MemberProvider>
+          </Routes>}
       </main>
     </Router >
   );
