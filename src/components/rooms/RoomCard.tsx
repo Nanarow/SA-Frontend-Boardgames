@@ -14,7 +14,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
             <div className='flex flex-col'>
                 <label className=' text-3xl font-bold ml-12 mt-4'>{room.Name}</label>
                 <label className=' text-2xl font-semibold ml-16 mt-4'>ห้องเล่นสำหรับ {room.RoomType.Capacity} คน</label>
-                <label className=' text-2xl font-semibold ml-16 mt-4'>{room.State}</label>
+                <label className={` text-2xl font-semibold ml-16 mt-4 ${(room.State == "available" ? "text-green-400" : " text-red-500")}`}>{room.State}</label>
                 <label className=' text-2xl font-semibold ml-16 mt-4'>__.__</label>
             </div>
             <div className=' absolute bottom-2 right-2'>

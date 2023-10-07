@@ -55,7 +55,7 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill }) => {
             <img src={QRcode} className=" h-64 object-contain"></img>
             <label>Total {total} ฿</label>
             <label>Upload slip</label>
-            <MyInput type="file" name='fileSlip' accept="image/*"></MyInput>
+            <MyInput type="file" name='fileSlip' accept="image/*" required></MyInput>
             <div className=" self-end flex flex-row items-center justify-center gap-4">
                 <DialogCloser>
                     <label>cancel</label>

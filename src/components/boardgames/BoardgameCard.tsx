@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Boardgame } from '../../interfaces'
 import { FaCircleQuestion } from 'react-icons/fa6'
 import MyButton from '../custom/MyButton'

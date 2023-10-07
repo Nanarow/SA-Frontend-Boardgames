@@ -14,12 +14,12 @@ interface IBoard {
 const BoardGames: React.FC<IBoard> = ({ role = "user" }) => {
     const [boardgameList, setBoardgameList] = useState<Boardgame[]>([])
 
-    async function getAll() {
+    async function getAllBoardgame() {
         setBoardgameList(await boardgameRequest.GetBoardgames("limit=8"))
     }
 
     useEffect(() => {
-        getAll()
+        getAllBoardgame()
     }, [])
 
     return (

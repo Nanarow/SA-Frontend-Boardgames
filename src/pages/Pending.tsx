@@ -44,9 +44,6 @@ const Pending = () => {
 
                     </div>)
                 ))}
-                {/* { }
-                <label>{ }</label>
-                <MyButton label="Pay" /> */}
             </div>
             <div className=" flex flex-col w-1/2 p-2 border-2 border-black">
                 <label className=" text-center">Room Bill</label>

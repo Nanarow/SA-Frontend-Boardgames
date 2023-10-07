@@ -8,6 +8,7 @@ import { RoomCardProps } from './RoomCard'
 import { CreateRoomBill } from '../billing/bills'
 import { RoomBill } from '../../interfaces'
 import PaymentForm from '../billing/PaymentForm'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -16,7 +17,7 @@ const ReserveForm: React.FC<RoomCardProps> = ({ room }) => {
     const { member } = useMemberContext()
     const { setDialogOpen } = useDialogCloser()
     const [roomBill, setRoomBill] = useState<RoomBill>()
-
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -26,6 +27,7 @@ const ReserveForm: React.FC<RoomCardProps> = ({ room }) => {
                 const data = await CreateRoomBill(formData, member, room)
                 setRoomBill(data)
                 setDialogOpen(false)
+                navigate("/loading/rooms")
             }
         }
 
@@ -34,11 +36,11 @@ const ReserveForm: React.FC<RoomCardProps> = ({ room }) => {
     return (
         <form className=" flex flex-col" ref={formRef} onSubmit={handleSubmit}>
             <label>Reserve date</label>
-            <MyInput type="date" name='reserveDate'></MyInput>
+            <MyInput type="date" name='reserveDate' required></MyInput>
             <label>Start time</label>
-            <MyInput type="time" name='startTime'></MyInput>
+            <MyInput type="time" name='startTime' required></MyInput>
             <label>Hour</label>
-            <MyInput type="number" name='hour'></MyInput>
+            <MyInput type="number" name='hour' required></MyInput>
             <div className=" self-end flex flex-row items-center justify-center gap-4">
                 <DialogCloser>
                     <label>cancel</label>

@@ -50,6 +50,7 @@ class HTTPRequest {
     if (response.ok) {
       return result.data;
     } else {
+      console.log(result.error);
       return result.error;
     }
   }
