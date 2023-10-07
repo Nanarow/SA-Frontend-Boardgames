@@ -26,7 +26,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ memberType }) => {
             </div>
             {
                 (member) ? (member.MemberTypeID === memberType.ID) ? null : (<div className=' absolute mt-[40px] bottom-7 left-1/2 -translate-x-[50%]'>
-                    <MyDialog content={<PaymentForm memberType={memberType} />} disableCloser={true}>
+                    <MyDialog content={<PaymentForm />} disableCloser={true}>
                         <MyButton label='Get Start' />
                     </MyDialog>
                 </div>) : null
