@@ -1,28 +1,27 @@
 import { useEffect, useState } from 'react'
 import MyButton from '../components/custom/MyButton'
-import { RoomBillRequest } from '../services/roomRequest'
+
 import { useMemberContext } from '../contexts/MemberProvider'
 import { GameBill, RoomBill } from '../interfaces'
-import { UpdateRoomBill } from '../components/billing/bills'
-import MyDialog from '../components/custom/MyDialog'
-import PaymentForm from '../components/billing/PaymentForm'
-import { GameBillRequest } from '../services/boardgameRequest'
 
-const Pending = () => {
+import MyDialog from '../components/custom/MyDialog'
+import PaymentForm from '../components/payment/PaymentForm'
+import { GetRoomBills } from '../services/roomRequest'
+import { GetGameBills } from '../services/boardgameRequest'
+
+
+const Payment = () => {
     const { member } = useMemberContext()
-    const roomBillRequest = new RoomBillRequest()
-    const gameBillRequest = new GameBillRequest()
     const [roomBills, setRoomBills] = useState<RoomBill[]>([])
     const [gameBills, setGameBills] = useState<GameBill[]>([])
-    const [open, setOpen] = useState(false)
     async function getAllRoomBill() {
         if (member) {
-            setRoomBills(await roomBillRequest.GetRoomBills(`status=pending&mid=${member.ID}`))
+            setRoomBills(await GetRoomBills(`status=pending&mid=${member.ID}`))
         }
     }
     async function getAllGameBill() {
         if (member) {
-            setGameBills(await gameBillRequest.GetGameBills(`status=pending&mid=${member.ID}`))
+            setGameBills(await GetGameBills(`status=pending&mid=${member.ID}`))
         }
     }
     useEffect(() => {
@@ -61,4 +60,4 @@ const Pending = () => {
     )
 }
 
-export default Pending
+export default Payment

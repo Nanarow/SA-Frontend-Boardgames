@@ -1,9 +1,9 @@
 import React from 'react'
 import DialogCloser from '../custom/DialogCloser'
 import MyButton from '../custom/MyButton'
-import { BoardgameRequest } from '../../services/boardgameRequest'
 import { useDialogCloser } from '../custom/MyDialog'
 import { useNavigate } from 'react-router-dom'
+import { DeleteBoardgame } from '../../services/boardgameRequest'
 
 interface IConfirm {
     boardgameID: number
@@ -13,8 +13,7 @@ const ConfirmDelete = ({ boardgameID }: IConfirm) => {
     const { setDialogOpen } = useDialogCloser()
     const navigate = useNavigate();
     async function handleConfirm() {
-        const boardgameRequest = new BoardgameRequest()
-        await boardgameRequest.DeleteBoardgame(boardgameID)
+        await DeleteBoardgame(boardgameID)
         navigate("/loading/boardgames")
         setDialogOpen(false)
 

@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import { useMemberContext } from '../contexts/MemberProvider'
-import { MemberRequest } from '../services/memberRequest'
-
-const memberRequest = new MemberRequest()
+import MyButton from '../components/custom/MyButton'
+import { GetMember } from '../services/memberRequest'
 
 const SignIn = () => {
-    const { setMember, memberType } = useMemberContext()
+    const { setMember, memberType, member } = useMemberContext()
     async function getMember() {
-        const m = await memberRequest.GetMember(4)
+        const m = await GetMember(1)
         setMember(m)
         // console.log(m)
     }
@@ -18,7 +17,7 @@ const SignIn = () => {
 
     return (
         <div>SignIn
-            <button onClick={() => console.log(memberType)}>test</button>
+            <MyButton onClick={() => console.log(memberType, member)} label="test"></MyButton>
         </div>
 
     )

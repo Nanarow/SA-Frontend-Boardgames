@@ -2,13 +2,11 @@ import React, { useRef, useState } from 'react'
 import MyInput from '../custom/MyInput'
 import DialogCloser from '../custom/DialogCloser'
 import MyButton from '../custom/MyButton'
-import MyDialog, { useDialogCloser } from '../custom/MyDialog'
+import { useDialogCloser } from '../custom/MyDialog'
 import { useMemberContext } from '../../contexts/MemberProvider'
 import { RoomCardProps } from './RoomCard'
-import { CreateRoomBill } from '../billing/bills'
-import { RoomBill } from '../../interfaces'
-import PaymentForm from '../billing/PaymentForm'
 import { useNavigate } from 'react-router-dom'
+import { CreateRoomBill } from '../../services/roomRequest'
 
 
 
@@ -16,7 +14,6 @@ const ReserveForm: React.FC<RoomCardProps> = ({ room }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
     const { member } = useMemberContext()
     const { setDialogOpen } = useDialogCloser()
-    const [roomBill, setRoomBill] = useState<RoomBill>()
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,10 +21,9 @@ const ReserveForm: React.FC<RoomCardProps> = ({ room }) => {
         if (formRef.current) {
             if (member) {
                 const formData = new FormData(formRef.current);
-                const data = await CreateRoomBill(formData, member, room)
-                setRoomBill(data)
+                await CreateRoomBill(formData, member, room)
                 setDialogOpen(false)
-                navigate("/loading/rooms")
+                navigate("/payment")
             }
         }
 

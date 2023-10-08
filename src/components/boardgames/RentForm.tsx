@@ -2,10 +2,10 @@ import React, { useRef } from 'react'
 import MyInput from '../custom/MyInput'
 import DialogCloser from '../custom/DialogCloser'
 import MyButton from '../custom/MyButton'
-import { CreateGameBill } from '../billing/bills'
 import { BoardgameCardProps } from './BoardgameCard'
 import { useDialogCloser } from '../custom/MyDialog'
 import { useMemberContext } from '../../contexts/MemberProvider'
+import { CreateGameBill } from '../../services/boardgameRequest'
 
 const RentForm: React.FC<BoardgameCardProps> = ({ boardgame }) => {
 

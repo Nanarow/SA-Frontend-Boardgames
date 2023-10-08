@@ -4,11 +4,12 @@ import BoardGames from './pages/BoardGames';
 import Rooms from './pages/Rooms';
 import Pricing from './pages/Pricing';
 import NavBar from './components/NavBar';
-import { MemberProvider, useMemberContext } from './contexts/MemberProvider';
+import { useMemberContext } from './contexts/MemberProvider';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
-import Pending from './pages/Pending';
+import Payment from './pages/Payment';
 import Loading from './pages/Loading';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const { memberType } = useMemberContext()
@@ -28,10 +29,14 @@ function App() {
             <Route path="/rooms" element=<Rooms /> />
             <Route path="/pricing" element=<Pricing /> />
             <Route path="/profile" element=<Profile /> />
-            <Route path="/pending" element=<Pending /> />
+            <Route path="/pending" element=<Payment /> />
             <Route path="/*" element=<SignIn /> />
             <Route path="/loading/:page" element=<Loading /> />
           </Routes>}
+        <Toaster
+          position="bottom-right"
+          reverseOrder={false}
+        />
       </main>
     </Router >
   );

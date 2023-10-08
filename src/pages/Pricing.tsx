@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { MemberTypeRequest } from '../services/memberRequest'
 import { MemberType } from '../interfaces'
 import PricingCard from '../components/pricing/PricingCard'
+import { GetAllMemberType } from '../services/memberRequest'
 
-const memberTypeRequest = new MemberTypeRequest()
 
 const hList = ["h-[450px]", "h-[500px]", "h-[550px]"]
 
@@ -11,7 +10,7 @@ const Pricing = () => {
     const [memberTypeList, setMemberTypeList] = useState<MemberType[]>([])
 
     async function getAllPricing() {
-        setMemberTypeList(await memberTypeRequest.GetAllMemberType())
+        setMemberTypeList(await GetAllMemberType())
     }
 
     useEffect(() => {

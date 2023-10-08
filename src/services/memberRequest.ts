@@ -1,38 +1,34 @@
-import {
-  Member,
-  MemberBill,
-  MemberType,
-  MemberWithMemberType,
-} from "../interfaces";
-import { API_URL, HTTPRequest } from "./httpRequest";
+import { ImageToBase64 } from "../helper/utility";
+import { MemberBill, MemberType, MemberWithMemberType } from "../interfaces";
+import { HTTPRequest } from "./httpRequest";
 
-export class MemberRequest extends HTTPRequest {
-  constructor() {
-    super(API_URL, "members");
-  }
-  public async GetMember(id: number) {
-    return (await super.GetById(id)) as MemberWithMemberType;
+const http = new HTTPRequest();
+
+export async function CreateMemberBill(
+  formData: FormData,
+  member: MemberWithMemberType,
+  memberType: MemberType
+) {
+  const fileSlip = formData.get("fileSlip");
+  if (fileSlip instanceof File) {
+    const base64 = await ImageToBase64(fileSlip);
+    const payDate = new Date();
+    const data: MemberBill = {
+      MemberTypeID: memberType.ID,
+      MemberID: member.ID,
+      Status: "paid",
+      Total: memberType.Price,
+      Slip: base64,
+      PayDate: payDate,
+    };
+    return (await http.Post("/members", JSON.stringify(data))) as MemberBill;
   }
 }
 
-export class MemberBillRequest extends HTTPRequest {
-  constructor() {
-    super(API_URL, "members/bills");
-  }
-  public async CreateMemberBill(data: MemberBill) {
-    return (await super.Post(JSON.stringify(data))) as MemberBill;
-  }
-
-  public async GetMemberBills(query: string) {
-    return (await super.GetByQuery(query)) as MemberBill[];
-  }
+export async function GetAllMemberType() {
+  return (await http.Get("/members/types")) as MemberType[];
 }
 
-export class MemberTypeRequest extends HTTPRequest {
-  constructor() {
-    super(API_URL, "members/types");
-  }
-  public async GetAllMemberType() {
-    return (await super.Get()) as MemberType[];
-  }
+export async function GetMember(id: number) {
+  return (await http.Get(`/members/${id}`)) as MemberWithMemberType;
 }

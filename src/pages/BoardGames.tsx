@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { BoardgameRequest } from '../services/boardgameRequest'
 import { Boardgame } from '../interfaces'
 import BoardgameCard from '../components/boardgames/BoardgameCard'
 import SideBar from '../components/boardgames/SideBar'
@@ -9,9 +8,8 @@ import MyButton from '../components/custom/MyButton'
 import { FaPlus } from 'react-icons/fa6'
 import MyDialog from '../components/custom/MyDialog'
 import BoardgameForm from '../components/boardgames/BoardgameForm'
+import { GetBoardgames } from '../services/boardgameRequest'
 
-
-const boardgameRequest = new BoardgameRequest()
 
 
 const BoardGames = () => {
@@ -19,7 +17,7 @@ const BoardGames = () => {
     const [boardgameList, setBoardgameList] = useState<Boardgame[]>([])
 
     async function getAllBoardgame() {
-        setBoardgameList(await boardgameRequest.GetBoardgames("limit=8&offset=20"))
+        setBoardgameList(await GetBoardgames("limit=8&offset=20"))
     }
 
     useEffect(() => {

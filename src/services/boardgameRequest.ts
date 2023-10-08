@@ -1,54 +1,9 @@
-import { ImageToBase64 } from "../helper/utility";
+import { ImageToBase64, getTimeDifference } from "../helper/utility";
 import { Boardgame, GameBill, MemberWithMemberType } from "../interfaces";
-import { API_URL, HTTPRequest } from "./httpRequest";
+import { HTTPRequest } from "./httpRequest";
 
-export class BoardgameRequest extends HTTPRequest {
-  constructor() {
-    super(API_URL, "boardgames");
-  }
-  public async GetBoardgames(query: string) {
-    return (await super.GetByQuery(query)) as Boardgame[];
-  }
-
-  public async FindBoardgame(id: number) {
-    return (await super.GetById(id)) as Boardgame;
-  }
-
-  public async CreateBoardgame(data: Boardgame) {
-    return (await super.Post(JSON.stringify(data))) as Boardgame;
-  }
-  public async UpdateBoardgame(data: Boardgame) {
-    return (await super.Patch(JSON.stringify(data))) as Boardgame;
-  }
-
-  public async DeleteBoardgame(id: number) {
-    return (await super.DeleteById(id)) as string;
-  }
-}
-
-export class GameBillRequest extends HTTPRequest {
-  constructor() {
-    super(API_URL, "boardgames/bills");
-  }
-  public async CreateGameBill(body: GameBill) {
-    return (await super.Post(JSON.stringify(body))) as GameBill;
-  }
-
-  public async UpdateGameBill(body: GameBill) {
-    return (await super.Patch(JSON.stringify(body))) as GameBill;
-  }
-
-  public async getGameBillById(id: number) {
-    return (await super.GetById(id)) as GameBill;
-  }
-
-  public async GetGameBills(query: string) {
-    return (await super.GetByQuery(query)) as GameBill[];
-  }
-}
-
+const http = new HTTPRequest();
 export async function CreateBoardGame(formData: FormData) {
-  const boardgameRequest = new BoardgameRequest();
   const file = formData.get("SrcFile");
   if (file instanceof File) {
     const base64 = await ImageToBase64(file);
@@ -66,7 +21,7 @@ export async function CreateBoardGame(formData: FormData) {
       Tutorial: `${formData.get("Tutorial")}`,
     };
     console.log(data);
-    return await boardgameRequest.CreateBoardgame(data);
+    return await http.Post("/boardgames", JSON.stringify(data));
   }
 }
 
@@ -74,7 +29,6 @@ export async function UpdateBoardgame(
   formData: FormData,
   boardgame: Boardgame
 ) {
-  const boardgameRequest = new BoardgameRequest();
   const file = formData.get("SrcFile");
   if (file instanceof File) {
     const base64 = await ImageToBase64(file);
@@ -96,9 +50,54 @@ export async function UpdateBoardgame(
       Src: newFile,
       Tutorial: `${formData.get("Tutorial")}`,
     };
-    console.log(data);
-    return await boardgameRequest.UpdateBoardgame(data);
-  } else {
-    console.log("don't have");
+    return await http.Patch("/boardgames", JSON.stringify(data));
   }
+}
+
+export async function CreateGameBill(
+  formData: FormData,
+  member: MemberWithMemberType,
+  boardgame: Boardgame
+) {
+  const startDate = new Date(`${formData.get("startDate")}`);
+  const endDate = new Date(`${formData.get("endDate")}`);
+  const { days } = getTimeDifference(startDate, endDate);
+  const data: GameBill = {
+    BoardgameID: boardgame.ID!,
+    StartDate: startDate,
+    EndDate: endDate,
+    ReturnStatus: "pending",
+    MemberID: member.ID,
+    Status: "pending",
+    Total: days * boardgame.RentalPrice,
+  };
+  return await http.Post("/boardgames/bills", JSON.stringify(data));
+}
+
+export async function UpdateGameBill(formData: FormData, gameBill: GameBill) {
+  const fileSlip = formData.get("fileSlip");
+  if (fileSlip instanceof File) {
+    const base64 = await ImageToBase64(fileSlip);
+    const payDate = new Date();
+    const data: GameBill = {
+      ...gameBill,
+      ReturnStatus: "renting",
+      Status: "paid",
+      Slip: base64,
+      PayDate: payDate,
+    };
+    return await http.Patch("/boardgames/bills", JSON.stringify(data));
+  }
+}
+
+export async function GetBoardgames(query: string) {
+  return (await http.Get(`/boardgames?${query}`)) as Boardgame[];
+}
+
+export async function GetGameBills(query: string) {
+  return (await http.Get(`/boardgames/bills?${query}`)) as GameBill[];
+}
+
+export async function DeleteBoardgame(boardgameID: number) {
+  return await http.Delete(`/boardgames/${boardgameID}`);
 }

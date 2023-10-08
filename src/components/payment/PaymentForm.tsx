@@ -5,17 +5,20 @@ import MyInput from '../custom/MyInput';
 import QRcode from '../../assets/QRCode.jpg'
 import { useDialogCloser } from '../custom/MyDialog';
 import { useMemberContext } from '../../contexts/MemberProvider';
-import { Boardgame, GameBill, MemberType, RoomBill } from '../../interfaces';
-import { UpdateGameBill, UpdateRoomBill } from './bills';
+import { GameBill, MemberType, RoomBill } from '../../interfaces';
 import { useNavigate } from 'react-router-dom';
+import { UpdateRoomBill } from '../../services/roomRequest';
+import { UpdateGameBill } from '../../services/boardgameRequest';
+import { CreateMemberBill } from '../../services/memberRequest';
 
 interface PaymentProps {
     roomBill?: RoomBill
     gameBill?: GameBill
+    memberType?: MemberType
 
 }
 
-const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill }) => {
+const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
     const { setDialogOpen } = useDialogCloser()
     const { member } = useMemberContext()
@@ -35,6 +38,10 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill }) => {
                     await UpdateGameBill(formData, gameBill)
                     navigate("/loading/pending")
                 }
+                if (memberType) {
+                    await CreateMemberBill(formData, member, memberType)
+                    navigate("/loading/*")
+                }
             }
         }
         setDialogOpen(false)
@@ -47,6 +54,11 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill }) => {
         if (gameBill) {
             setTotal(gameBill.Total)
         }
+        if (memberType) {
+            console.log(memberType)
+            setTotal(memberType.Price)
+        }
+
     }, [])
 
 
