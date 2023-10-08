@@ -6,13 +6,14 @@ import { useDialogCloser } from '../custom/MyDialog';
 import { Boardgame } from '../../interfaces';
 import { CreateBoardGame, UpdateBoardgame } from '../../services/boardgameRequest';
 import { useMemberContext } from '../../contexts/MemberProvider';
+import { useNavigate } from 'react-router-dom';
 
 interface IBGForm {
     boardgame?: Boardgame
 }
 
 const BoardgameForm = ({ boardgame }: IBGForm) => {
-
+    const navigate = useNavigate();
     const formRef = useRef<HTMLFormElement | null>(null);
     const { member } = useMemberContext();
     const { setDialogOpen } = useDialogCloser()
@@ -26,7 +27,8 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
                 } else {
                     CreateBoardGame(formData)
                 }
-                //setDialogOpen(false)
+                setDialogOpen(false)
+                navigate("/loading/boardgames")
             }
         }
     };

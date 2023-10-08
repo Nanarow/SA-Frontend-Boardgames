@@ -18,7 +18,7 @@ const NavBar = () => {
                 <MyMenu items={["Board Games", "Rooms", "Pricing"]} className=" w-[480px]" defaultValue="Board Games" onValueChange={(page) => onPageChange(page)} />
             </div>
             <div className="mx-4 grow flex flex-col">
-                <MyButton leftIcon={<FaWallet />} className="max-w-[80px]" onClick={() => onPageChange("pending")} />
+                <MyButton leftIcon={<FaWallet />} className="max-w-[80px]" onClick={() => onPageChange("payment")} />
             </div>
             <div className="mx-4 grow flex flex-col">
                 <MyButton leftIcon={<FaUser />} className="max-w-[80px]" onClick={() => onPageChange("profile")} />

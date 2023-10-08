@@ -6,7 +6,7 @@ import { GetMember } from '../services/memberRequest'
 const SignIn = () => {
     const { setMember, memberType, member } = useMemberContext()
     async function getMember() {
-        const m = await GetMember(1)
+        const m = await GetMember(4)
         setMember(m)
         // console.log(m)
     }
@@ -16,7 +16,7 @@ const SignIn = () => {
     }, [])
 
     return (
-        <div>SignIn
+        <div>
             <MyButton onClick={() => console.log(memberType, member)} label="test"></MyButton>
         </div>
 

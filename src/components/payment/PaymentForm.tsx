@@ -21,7 +21,7 @@ interface PaymentProps {
 const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
     const { setDialogOpen } = useDialogCloser()
-    const { member } = useMemberContext()
+    const { member, setMember } = useMemberContext()
     const [total, setTotal] = useState(0)
     const navigate = useNavigate();
 
@@ -39,8 +39,11 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType })
                     navigate("/loading/pending")
                 }
                 if (memberType) {
-                    await CreateMemberBill(formData, member, memberType)
-                    navigate("/loading/*")
+                    const newMember = await CreateMemberBill(formData, member, memberType)
+                    if (newMember) {
+                        setMember(newMember)
+                    }
+                    navigate("/loading/pricing")
                 }
             }
         }

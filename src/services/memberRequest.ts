@@ -21,7 +21,10 @@ export async function CreateMemberBill(
       Slip: base64,
       PayDate: payDate,
     };
-    return (await http.Post("/members", JSON.stringify(data))) as MemberBill;
+    return (await http.Post(
+      "/members",
+      JSON.stringify(data)
+    )) as MemberWithMemberType;
   }
 }
 

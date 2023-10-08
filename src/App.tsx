@@ -29,7 +29,7 @@ function App() {
             <Route path="/rooms" element=<Rooms /> />
             <Route path="/pricing" element=<Pricing /> />
             <Route path="/profile" element=<Profile /> />
-            <Route path="/pending" element=<Payment /> />
+            <Route path="/payment" element=<Payment /> />
             <Route path="/*" element=<SignIn /> />
             <Route path="/loading/:page" element=<Loading /> />
           </Routes>}

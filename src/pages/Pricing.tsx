@@ -4,7 +4,7 @@ import PricingCard from '../components/pricing/PricingCard'
 import { GetAllMemberType } from '../services/memberRequest'
 
 
-const hList = ["h-[450px]", "h-[500px]", "h-[550px]"]
+const hList = ["h-[400px]", "h-[450px]", "h-[500px]", "h-[550px]"]
 
 const Pricing = () => {
     const [memberTypeList, setMemberTypeList] = useState<MemberType[]>([])

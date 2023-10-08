@@ -53,3 +53,7 @@ export async function GetRoomBills(query: string) {
 export async function GetAllRoom(query: string) {
   return (await http.Get(`/rooms?${query}`)) as RoomWithRoomType[];
 }
+
+export async function GetRoomBillByRoomID(id: number) {
+  return (await http.Get(`/rooms/bills/room/${id}`)) as RoomBill;
+}
