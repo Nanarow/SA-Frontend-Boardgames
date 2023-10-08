@@ -1,7 +1,6 @@
 import React from 'react'
 import DialogCloser from '../custom/DialogCloser'
 import MyButton from '../custom/MyButton'
-import { useDialogCloser } from '../custom/MyDialog'
 import { useNavigate } from 'react-router-dom'
 import { DeleteBoardgame } from '../../services/boardgameRequest'
 
@@ -10,14 +9,10 @@ interface IConfirm {
 }
 
 const ConfirmDelete = ({ boardgameID }: IConfirm) => {
-    const { setDialogOpen } = useDialogCloser()
     const navigate = useNavigate();
     async function handleConfirm() {
         await DeleteBoardgame(boardgameID)
         navigate("/loading/boardgames")
-        setDialogOpen(false)
-
-
     }
     return (
         <div className="flex flex-col">

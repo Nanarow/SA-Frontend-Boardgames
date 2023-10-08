@@ -16,9 +16,9 @@ const PricingCard: React.FC<PricingCardProps> = ({ memberType }) => {
 
         <div className={`flex flex-col justify-start h-full ${(member?.MemberTypeID === memberType.ID) ? "bg-green-400" : ""}`}>
             <label className=' text-center text-2xl mt-6'>{memberType.Name}</label>
-            <label className=' font-bold text-5xl my-16 text-center'>{memberType.Price == 0 ? "Free!" : `${memberType.Price}`} <label className=' text-sm font-medium'>/ month</label></label>
+            <label className=' font-bold text-5xl my-16 text-center'>{memberType.Price === 0 ? "Free!" : `${memberType.Price}`} <label className=' text-sm font-medium'>/ month</label></label>
             <div className=' self-start ml-2 mt-2'>
-                <MyCheckbox label={`เช่าบอร์ดเกมได้ ${memberType.MaxBoardgame == 2147483647 ? "unlimit" : `${memberType.MaxBoardgame}`} เกม/ครั้ง`} checked={true} />
+                <MyCheckbox label={`เช่าบอร์ดเกมได้ ${memberType.MaxBoardgame === 2147483647 ? "unlimit" : `${memberType.MaxBoardgame}`} เกม/ครั้ง`} checked={true} />
                 <div className='mt-4'>
                     <MyCheckbox label={`จองห้องได้ไม่เกิน ${memberType.MaxRoomHour} ชั่วโมง/วัน`} checked={true} />
                 </div>

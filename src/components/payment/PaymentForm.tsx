@@ -3,7 +3,6 @@ import DialogCloser from '../custom/DialogCloser';
 import MyButton from '../custom/MyButton';
 import MyInput from '../custom/MyInput';
 import QRcode from '../../assets/QRCode.jpg'
-import { useDialogCloser } from '../custom/MyDialog';
 import { useMemberContext } from '../../contexts/MemberProvider';
 import { GameBill, MemberType, RoomBill } from '../../interfaces';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +19,6 @@ interface PaymentProps {
 
 const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
-    const { setDialogOpen } = useDialogCloser()
     const { member, setMember } = useMemberContext()
     const [total, setTotal] = useState(0)
     const navigate = useNavigate();
@@ -32,11 +30,11 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType })
                 const formData = new FormData(formRef.current);
                 if (roomBill) {
                     await UpdateRoomBill(formData, roomBill)
-                    navigate("/loading/pending")
+                    navigate("/loading/payment")
                 }
                 if (gameBill) {
                     await UpdateGameBill(formData, gameBill)
-                    navigate("/loading/pending")
+                    navigate("/loading/payment")
                 }
                 if (memberType) {
                     const newMember = await CreateMemberBill(formData, member, memberType)
@@ -47,7 +45,6 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType })
                 }
             }
         }
-        setDialogOpen(false)
     };
 
     useEffect(() => {
@@ -58,10 +55,8 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType })
             setTotal(gameBill.Total)
         }
         if (memberType) {
-            console.log(memberType)
             setTotal(memberType.Price)
         }
-
     }, [])
 
 

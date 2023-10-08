@@ -21,7 +21,7 @@ const BoardgameCard: React.FC<BoardgameCardProps> = ({ boardgame }) => {
             <div className="flex flex-col">
                 <label className='ml-2 font-medium mb-4 truncate pr-8'>{boardgame.Title}</label>
                 <label className='ml-2 font-normal'>Player: {boardgame.NumberOfPlayers}</label>
-                <label className='ml-2 font-normal truncate'>Category: {boardgame.Category}</label>
+                <label className='ml-2 font-normal'>PayTime: {boardgame.PlayTime}</label>
                 <label className='ml-2 font-normal'>Amount : {boardgame.QuantityInStock}</label>
                 <label className='ml-2 font-normal'>Price {boardgame.RentalPrice}฿ </label>
             </div>
@@ -39,10 +39,6 @@ const BoardgameCard: React.FC<BoardgameCardProps> = ({ boardgame }) => {
                 <MyDialog content={<RentForm boardgame={boardgame} />} disableCloser={true}>
                     <MyButton label="Rent" className=" absolute bottom-2 right-2" />
                 </MyDialog>}
-
-
-
-
         </div>
     )
 }

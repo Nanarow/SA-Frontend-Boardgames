@@ -1,6 +1,4 @@
-import { NotifyError, NotifySuccess } from "../components/custom/MyNotify";
-
-const API_URL = "http://localhost:8985";
+import { NotifyError, NotifySuccess } from "../components/custom/notify";
 
 type Method = "GET" | "OPTIONS" | "POST" | "PATCH" | "PUT" | "DELETE";
 
@@ -8,22 +6,20 @@ class HTTPRequest {
   protected contentType: string = "application/json";
   private readonly baseUrl: string = "http://localhost:8985";
 
-  constructor() {}
-
-  public async Get(endpoint: string) {
-    return this.SendRequest("GET", `${this.baseUrl}${endpoint}`);
+  public Get(resource: string) {
+    return this.SendRequest("GET", `${this.baseUrl}${resource}`);
   }
 
-  public async Delete(endpoint: string) {
-    return this.SendRequest("DELETE", `${this.baseUrl}${endpoint}`);
+  public Delete(resource: string) {
+    return this.SendRequest("DELETE", `${this.baseUrl}${resource}`);
   }
 
-  public async Post(endpoint: string, body: string) {
-    return this.SendRequest("POST", `${this.baseUrl}${endpoint}`, body);
+  public Post(resource: string, body: string) {
+    return this.SendRequest("POST", `${this.baseUrl}${resource}`, body);
   }
 
-  public async Patch(endpoint: string, body: string) {
-    return this.SendRequest("PATCH", `${this.baseUrl}${endpoint}`, body);
+  public Patch(resource: string, body: string) {
+    return this.SendRequest("PATCH", `${this.baseUrl}${resource}`, body);
   }
 
   public async SendRequest(method: Method, endpoint: string, body?: string) {
@@ -41,9 +37,11 @@ class HTTPRequest {
       NotifyError(result.error);
       return;
     }
-    NotifySuccess();
+    if (method !== "GET") {
+      NotifySuccess(endpoint.replace(this.baseUrl, ""));
+    }
     return result.data;
   }
 }
 
-export { HTTPRequest, API_URL };
+export { HTTPRequest };

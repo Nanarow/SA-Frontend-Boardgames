@@ -4,7 +4,7 @@ import { HTTPRequest } from "./httpRequest";
 
 const http = new HTTPRequest();
 
-export async function CreateMemberBill(
+async function CreateMemberBill(
   formData: FormData,
   member: MemberWithMemberType,
   memberType: MemberType
@@ -28,10 +28,12 @@ export async function CreateMemberBill(
   }
 }
 
-export async function GetAllMemberType() {
+async function GetAllMemberType() {
   return (await http.Get("/members/types")) as MemberType[];
 }
 
-export async function GetMember(id: number) {
+async function GetMember(id: number) {
   return (await http.Get(`/members/${id}`)) as MemberWithMemberType;
 }
+
+export { CreateMemberBill, GetAllMemberType, GetMember };

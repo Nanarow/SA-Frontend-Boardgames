@@ -1,7 +1,6 @@
 import { addTimeToDate, ImageToBase64 } from "../helper/utility";
 import {
   MemberWithMemberType,
-  Room,
   RoomBill,
   RoomWithRoomType,
 } from "../interfaces";
@@ -9,7 +8,7 @@ import { HTTPRequest } from "./httpRequest";
 
 const http = new HTTPRequest();
 
-export async function CreateRoomBill(
+async function CreateRoomBill(
   formData: FormData,
   member: MemberWithMemberType,
   room: RoomWithRoomType
@@ -31,7 +30,7 @@ export async function CreateRoomBill(
   return (await http.Post("/rooms/bills", JSON.stringify(data))) as RoomBill;
 }
 
-export async function UpdateRoomBill(formData: FormData, roomBill: RoomBill) {
+async function UpdateRoomBill(formData: FormData, roomBill: RoomBill) {
   const fileSlip = formData.get("fileSlip");
   if (fileSlip instanceof File) {
     const base64 = await ImageToBase64(fileSlip);
@@ -46,14 +45,22 @@ export async function UpdateRoomBill(formData: FormData, roomBill: RoomBill) {
   }
 }
 
-export async function GetRoomBills(query: string) {
+async function GetRoomBills(query: string) {
   return (await http.Get(`/rooms/bills?${query}`)) as RoomBill[];
 }
 
-export async function GetAllRoom(query: string) {
+async function GetAllRoom(query: string) {
   return (await http.Get(`/rooms?${query}`)) as RoomWithRoomType[];
 }
 
-export async function GetRoomBillByRoomID(id: number) {
+async function GetRoomBillByRoomID(id: number) {
   return (await http.Get(`/rooms/bills/room/${id}`)) as RoomBill;
 }
+
+export {
+  GetAllRoom,
+  CreateRoomBill,
+  UpdateRoomBill,
+  GetRoomBills,
+  GetRoomBillByRoomID,
+};

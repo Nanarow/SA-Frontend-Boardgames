@@ -3,7 +3,7 @@ import { Boardgame, GameBill, MemberWithMemberType } from "../interfaces";
 import { HTTPRequest } from "./httpRequest";
 
 const http = new HTTPRequest();
-export async function CreateBoardGame(formData: FormData) {
+async function CreateBoardGame(formData: FormData) {
   const file = formData.get("SrcFile");
   if (file instanceof File) {
     const base64 = await ImageToBase64(file);
@@ -25,10 +25,7 @@ export async function CreateBoardGame(formData: FormData) {
   }
 }
 
-export async function UpdateBoardgame(
-  formData: FormData,
-  boardgame: Boardgame
-) {
+async function UpdateBoardgame(formData: FormData, boardgame: Boardgame) {
   const file = formData.get("SrcFile");
   if (file instanceof File) {
     const base64 = await ImageToBase64(file);
@@ -54,7 +51,7 @@ export async function UpdateBoardgame(
   }
 }
 
-export async function CreateGameBill(
+async function CreateGameBill(
   formData: FormData,
   member: MemberWithMemberType,
   boardgame: Boardgame
@@ -74,7 +71,7 @@ export async function CreateGameBill(
   return await http.Post("/boardgames/bills", JSON.stringify(data));
 }
 
-export async function UpdateGameBill(formData: FormData, gameBill: GameBill) {
+async function UpdateGameBill(formData: FormData, gameBill: GameBill) {
   const fileSlip = formData.get("fileSlip");
   if (fileSlip instanceof File) {
     const base64 = await ImageToBase64(fileSlip);
@@ -90,14 +87,24 @@ export async function UpdateGameBill(formData: FormData, gameBill: GameBill) {
   }
 }
 
-export async function GetBoardgames(query: string) {
+async function GetBoardgames(query: string) {
   return (await http.Get(`/boardgames?${query}`)) as Boardgame[];
 }
 
-export async function GetGameBills(query: string) {
+async function GetGameBills(query: string) {
   return (await http.Get(`/boardgames/bills?${query}`)) as GameBill[];
 }
 
-export async function DeleteBoardgame(boardgameID: number) {
+async function DeleteBoardgame(boardgameID: number) {
   return await http.Delete(`/boardgames/${boardgameID}`);
 }
+
+export {
+  DeleteBoardgame,
+  GetBoardgames,
+  CreateBoardGame,
+  UpdateBoardgame,
+  CreateGameBill,
+  UpdateGameBill,
+  GetGameBills,
+};

@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Payment from './pages/Payment';
 import Loading from './pages/Loading';
 import { Toaster } from 'react-hot-toast';
+import { toastOptions } from './components/custom/notify';
 
 function App() {
   const { memberType } = useMemberContext()
@@ -17,12 +18,13 @@ function App() {
     <Router >
       <main className=" h-screen m-0 w-full overflow-hidden overscroll-none">
         <NavBar />
-        {(memberType === "admin") ? <Routes>
-          <Route path="/components" element=<MyComponents /> />
-          <Route path="/boardgames" element=<BoardGames /> />
-          <Route path="/*" element=<SignIn /> />
-          <Route path="/loading/:page" element=<Loading /> />
-        </Routes> :
+        {(memberType === "admin") ?
+          <Routes>
+            <Route path="/components" element=<MyComponents /> />
+            <Route path="/boardgames" element=<BoardGames /> />
+            <Route path="/*" element=<SignIn /> />
+            <Route path="/loading/:page" element=<Loading /> />
+          </Routes> :
           <Routes>
             <Route path="/components" element=<MyComponents /> />
             <Route path="/boardgames" element=<BoardGames /> />
@@ -36,6 +38,7 @@ function App() {
         <Toaster
           position="bottom-right"
           reverseOrder={false}
+          toastOptions={toastOptions}
         />
       </main>
     </Router >

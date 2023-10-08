@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import DialogCloser from '../custom/DialogCloser';
 import MyButton from '../custom/MyButton';
 import MyInput from '../custom/MyInput';
-import { useDialogCloser } from '../custom/MyDialog';
 import { Boardgame } from '../../interfaces';
 import { CreateBoardGame, UpdateBoardgame } from '../../services/boardgameRequest';
 import { useMemberContext } from '../../contexts/MemberProvider';
@@ -16,18 +15,16 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
     const navigate = useNavigate();
     const formRef = useRef<HTMLFormElement | null>(null);
     const { member } = useMemberContext();
-    const { setDialogOpen } = useDialogCloser()
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (formRef.current) {
             const formData = new FormData(formRef.current);
             if (member) {
                 if (boardgame) {
-                    UpdateBoardgame(formData, boardgame)
+                    await UpdateBoardgame(formData, boardgame)
                 } else {
-                    CreateBoardGame(formData)
+                    await CreateBoardGame(formData)
                 }
-                setDialogOpen(false)
                 navigate("/loading/boardgames")
             }
         }

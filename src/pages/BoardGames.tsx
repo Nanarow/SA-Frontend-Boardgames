@@ -28,12 +28,12 @@ const BoardGames = () => {
         <section className="flex flex-row h-[calc(100%-64px)]">
             <SideBar />
             <section className=" w-[80%] ">
-                <div className=" h-[90%] flex flex-wrap justify-between gap-y-2 mb-2 p-2">
+                <div className=" h-[90%] flex flex-wrap justify-start gap-x-2 gap-y-2 mb-2 p-2">
                     {boardgameList.map((boardgame, index) => <BoardgameCard boardgame={boardgame} key={index} />)}
                 </div>
                 {(memberType === "admin") ?
                     <MyDialog content={<BoardgameForm />} className=" max-w-2xl" disableCloser>
-                        <MyButton leftIcon={<FaPlus />} className='mx-2' />
+                        <MyButton leftIcon={<FaPlus />} className='mx-2 bg-green-400' />
                     </MyDialog>
                     : null}
                 {/* <MyPagination /> */}

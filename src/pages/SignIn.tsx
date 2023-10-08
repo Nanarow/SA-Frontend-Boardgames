@@ -2,12 +2,17 @@ import React, { useEffect } from 'react'
 import { useMemberContext } from '../contexts/MemberProvider'
 import MyButton from '../components/custom/MyButton'
 import { GetMember } from '../services/memberRequest'
+import { useNavigate } from 'react-router-dom'
+
+
 
 const SignIn = () => {
     const { setMember, memberType, member } = useMemberContext()
+    const navigate = useNavigate();
     async function getMember() {
         const m = await GetMember(4)
         setMember(m)
+        navigate("/boardgames")
         // console.log(m)
     }
 
