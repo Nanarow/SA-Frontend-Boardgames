@@ -1,5 +1,6 @@
-import { createContext, PropsWithChildren, useContext, useState } from 'react'
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react'
 import { MemberWithMemberType } from '../interfaces'
+import { useNavigate } from 'react-router-dom'
 
 type MemberContextProps = {
     member: MemberWithMemberType | undefined,
@@ -14,7 +15,7 @@ const MemberContext = createContext<MemberContextProps | null>(null)
 const MemberProvider = ({ children }: PropsWithChildren) => {
     const [member, setMemberWithType] = useState<MemberWithMemberType>()
     const [memberType, setMemberType] = useState<Role>()
-
+    const navigate = useNavigate();
     function setMember(member: MemberWithMemberType) {
         setMemberWithType(member)
         if (member.MemberType.Name === "admin") {
@@ -23,6 +24,13 @@ const MemberProvider = ({ children }: PropsWithChildren) => {
             setMemberType("user")
         }
     }
+
+    useEffect(() => {
+        if (!member) {
+            navigate("/signIn")
+        }
+    }, [])
+
 
     return (
         <MemberContext.Provider value={{ member, memberType, setMember }}>

@@ -10,9 +10,11 @@ const SignIn = () => {
     const { setMember, memberType, member } = useMemberContext()
     const navigate = useNavigate();
     async function getMember() {
-        const m = await GetMember(4)
-        setMember(m)
-        navigate("/boardgames")
+        const m = await GetMember(8)
+        if (m) {
+            setMember(m)
+            navigate("/boardgames")
+        }
         // console.log(m)
     }
 
@@ -24,7 +26,6 @@ const SignIn = () => {
         <div>
             <MyButton onClick={() => console.log(memberType, member)} label="test"></MyButton>
         </div>
-
     )
 }
 
