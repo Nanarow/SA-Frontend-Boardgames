@@ -37,12 +37,14 @@ const RoomCard = ({ room }: RoomCardProps) => {
                 <label className={` text-2xl font-semibold ml-16 mt-4 ${(room.State === "available" ? "text-green-400" : " text-red-500")}`}>{room.State}</label>
                 <label className=' text-2xl font-semibold ml-16 mt-4'>{startTime} - {endTime}</label>
             </div>
-            <div className=' absolute bottom-2 right-2'>
-                <MyDialog content={<ReserveForm room={room} />} disableCloser={true}>
-                    <MyButton label='Reserve' />
-                </MyDialog>
-
-            </div>
+            {room.State === "available" ?
+                <div className=' absolute bottom-2 right-2'>
+                    <MyDialog content={<ReserveForm room={room} />} disableCloser={true}>
+                        <MyButton label='Reserve' />
+                    </MyDialog>
+                </div> :
+                null
+            }
         </div>
     )
 }

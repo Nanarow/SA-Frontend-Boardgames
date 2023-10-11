@@ -10,7 +10,7 @@ const SignIn = () => {
     const { setMember, memberType, member } = useMemberContext()
     const navigate = useNavigate();
     async function getMember() {
-        const m = await GetMember(8)
+        const m = await GetMember(2)
         if (m) {
             setMember(m)
             navigate("/boardgames")
@@ -23,8 +23,9 @@ const SignIn = () => {
     }, [])
 
     return (
-        <div>
+        <div className=" h-full">
             <MyButton onClick={() => console.log(memberType, member)} label="test"></MyButton>
+            {/* <iframe src='https://my.spline.design/draganddropstreetcopy-eb672580edafb016b109744ed974591b/' className="w-full h-screen"></iframe> */}
         </div>
     )
 }
