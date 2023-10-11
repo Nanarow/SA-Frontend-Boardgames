@@ -27,28 +27,36 @@ const SignUpForm = () => {
         <form className="card-form mt-4 flex h-auto w-[520px] flex-col justify-center rounded-lg border-2 border-black bg-white p-2 shadow-solid-m " ref={formRef} onSubmit={handleSubmit}>
             <h1 className=" text-center font-bold text-4xl m-2">Register</h1>
             <div className="relative flex flex-row">
-                <MyInput type="text" placeholder="First name" />
-                <MyInput type="text" placeholder="Last name" />
+                <MyInput type="text" placeholder="First name" name="firstName" />
+                <MyInput type="text" placeholder="Last name" name="lastName" />
             </div>
+
             <MyInput
                 leftIcon={<FaPhone />}
                 type="tel" placeholder="Tel."
+                name="tel"
+
             />
             <MyInput
                 leftIcon={<HiMail />}
                 placeholder="Email" type="email"
                 errorMsg="Invalid Email"
+                name="email"
             />
             <MyInput
                 leftIcon={<FaUser />}
                 placeholder="Username"
-                errorMsg="Invalid Email"
+                errorMsg="Wrong Username"
+                name="userName"
+
             />
             <MyInput
                 leftIcon={<FaLock />}
                 type="password" placeholder="Password"
                 errorMsg="Wrong password?"
+                name="password"
             />
+
             {/* <MyCheckbox label="I Agree with privacy and policy" /> */}
             <p className=" text-center m-2">
                 Already have an account ?{" "}

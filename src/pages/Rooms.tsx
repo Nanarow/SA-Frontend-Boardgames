@@ -5,7 +5,7 @@ import { GetAllRoom } from '../services/roomRequest'
 const Rooms = () => {
     const [roomList, setRoomList] = useState<RoomWithRoomType[]>([])
     async function getAllRoom() {
-        setRoomList(await GetAllRoom("limit=4"))
+        setRoomList(await GetAllRoom("limit=4&offset=2"))
     }
     useEffect(() => {
         getAllRoom()
