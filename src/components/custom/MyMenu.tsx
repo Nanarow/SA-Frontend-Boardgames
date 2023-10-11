@@ -1,6 +1,6 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge';
-import { IRadioGroup } from './RadioGroup';
+import { IRadioGroup } from './radixPrimitives';
 import { RadioGroup, RadioGroupItem } from '@radix-ui/react-radio-group';
 
 
