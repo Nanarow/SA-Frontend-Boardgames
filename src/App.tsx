@@ -5,7 +5,7 @@ import Rooms from './pages/Rooms';
 import Pricing from './pages/Pricing';
 import NavBar from './components/NavBar';
 import { useMemberContext } from './contexts/MemberProvider';
-import SignIn from './pages/SignIn';
+import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 import Payment from './pages/Payment';
 import Loading from './pages/Loading';
@@ -19,20 +19,22 @@ function App() {
       <NavBar />
       {(memberType === "admin") ?
         <Routes>
-          <Route path="/components" element=<MyComponents /> />
-          <Route path="/boardgames" element=<BoardGames /> />
-          <Route path="/*" element=<SignIn /> />
-          <Route path="/loading/:page" element=<Loading /> />
+          <Route path="/components" element={<MyComponents />} />
+          <Route path="/boardgames" element={<BoardGames />} />
+          <Route path="/*" element={<Auth form="login" />} />
+          <Route path="/loading/:page" element={<Loading />} />
         </Routes> :
         <Routes>
-          <Route path="/components" element=<MyComponents /> />
-          <Route path="/boardgames" element=<BoardGames /> />
-          <Route path="/rooms" element=<Rooms /> />
-          <Route path="/pricing" element=<Pricing /> />
-          <Route path="/profile" element=<Profile /> />
-          <Route path="/payment" element=<Payment /> />
-          <Route path="/*" element=<SignIn /> />
-          <Route path="/loading/:page" element=<Loading /> />
+          <Route path="/components" element={<MyComponents />} />
+          <Route path="/boardgames" element={<BoardGames />} />
+          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/*" element={<Auth form="login" />} />
+          <Route path="/login" element={<Auth form="login" />} />
+          <Route path="/register" element={<Auth form="register" />} />
+          <Route path="/loading/:page" element={<Loading />} />
         </Routes>}
       <Toaster
         position="bottom-right"

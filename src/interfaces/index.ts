@@ -58,9 +58,10 @@ interface RoomType {
   Name: string;
   Capacity: string;
   Price: number;
+  Image: string;
 }
 interface User {
-  ID: number;
+  ID?: number;
   FirstName: string;
   LastName: string;
   UserName: string;
@@ -92,6 +93,11 @@ interface MemberType {
   Price: number;
 }
 
+interface LoginPayload {
+  UserName: string;
+  Password: string;
+}
+
 export type {
   Boardgame,
   GameBill,
@@ -105,4 +111,5 @@ export type {
   MemberBill,
   RoomWithRoomType,
   MemberWithMemberType,
+  LoginPayload,
 };

@@ -1,6 +1,6 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react'
 import { MemberWithMemberType } from '../interfaces'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 type MemberContextProps = {
     member: MemberWithMemberType | undefined,
@@ -26,8 +26,8 @@ const MemberProvider = ({ children }: PropsWithChildren) => {
     }
 
     useEffect(() => {
-        if (!member) {
-            navigate("/signIn")
+        if (authRequired() && !member) {
+            navigate("/login")
         }
     }, [])
 
@@ -49,5 +49,9 @@ export function useMemberContext() {
         throw new Error("useMemberContext must be used within a MemberProvider")
     }
     return context
+}
 
+export function authRequired() {
+    const location = window.location
+    return !(location.pathname === "/login" || location.pathname === "/" || location.pathname === "/register")
 }

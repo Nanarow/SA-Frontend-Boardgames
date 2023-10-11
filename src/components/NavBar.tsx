@@ -2,11 +2,15 @@ import MyButton from './custom/MyButton'
 import { FaHouseChimney, FaUser, FaWallet } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom';
 import MyMenu from './custom/MyMenu';
+import { authRequired } from '../contexts/MemberProvider';
 
 const NavBar = () => {
     const navigate = useNavigate();
     const onPageChange = (page: string) => {
         navigate(`/${page.toLowerCase().replace(/\s/g, "")}`);
+    }
+    if (!authRequired()) {
+        return null
     }
     return (
         <nav className="  relative flex flex-row w-full h-16 items-center">

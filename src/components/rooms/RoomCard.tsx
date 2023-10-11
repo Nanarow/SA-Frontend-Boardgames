@@ -31,8 +31,9 @@ const RoomCard = ({ room }: RoomCardProps) => {
 
     return (
         <div className='w-[600px] h-[240px] rounded border-2 border-black shadow-solid-m relative' >
-            <div className='flex flex-col'>
-                <label className=' text-3xl font-bold ml-12 mt-4'>{room.Name}</label>
+            <img src={require(`../../assets/${room.RoomType.Image}.png`)} className=" object-contain h-full border-r-2 border-black"></img>
+            <div className='flex flex-col absolute right-5 top-1'>
+                <label className=' text-3xl font-bold ml-16 mt-4'>{room.Name}</label>
                 <label className=' text-2xl font-semibold ml-16 mt-4'>ห้องเล่นสำหรับ {room.RoomType.Capacity} คน</label>
                 <label className={` text-2xl font-semibold ml-16 mt-4 ${(room.State === "available" ? "text-green-400" : " text-red-500")}`}>{room.State}</label>
                 <label className=' text-2xl font-semibold ml-16 mt-4'>{startTime} - {endTime}</label>

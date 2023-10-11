@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Boardgame } from '../interfaces'
 import BoardgameCard from '../components/boardgames/BoardgameCard'
 import SideBar from '../components/boardgames/SideBar'
-import MyPagination from '../components/custom/MyPagination'
 import { useMemberContext } from '../contexts/MemberProvider'
 import MyButton from '../components/custom/MyButton'
 import { FaPlus } from 'react-icons/fa6'
@@ -36,7 +35,6 @@ const BoardGames = () => {
                         <MyButton leftIcon={<FaPlus />} className='mx-2 bg-green-400' />
                     </MyDialog>
                     : null}
-                {/* <MyPagination /> */}
             </section>
         </section>
     )
