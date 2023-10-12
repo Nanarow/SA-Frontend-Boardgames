@@ -1,33 +1,50 @@
-import MyButton from './custom/MyButton'
-import { FaHouseChimney, FaUser, FaWallet } from 'react-icons/fa6'
+import { buttonAnimation } from './custom/MyButton'
+import { FaUser, FaWallet } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom';
 import MyMenu from './custom/MyMenu';
 import { authRequired } from '../contexts/MemberProvider';
+import { RadioGroup, RadioGroupItem } from './custom/radixPrimitives';
 
 const NavBar = () => {
     const navigate = useNavigate();
+    const location = window.location
+    const menus = ["Board Games", "Rooms", "Pricing"]
+    const paths = ["boardgames", "rooms", "pricing"]
+    function isActive(currentPath: string) {
+        return location.pathname === currentPath
+    }
     const onPageChange = (page: string) => {
-        navigate(`/${page.toLowerCase().replace(/\s/g, "")}`);
+        navigate(`/${page}`);
     }
+
     if (!authRequired()) {
-        return null
+        return null;
     }
+
     return (
-        <nav className="  relative flex flex-row w-full h-16 items-center">
-            <div className=' flex flex-row items-center ml-4  grow'>
-                <FaHouseChimney size={"32px"} />
-                <label className="ml-2 text-xl font-bold">House Of Board Games</label>
-            </div>
-            <div className=" grow">
-                <MyMenu items={["Board Games", "Rooms", "Pricing"]} className=" w-[480px]" defaultValue="Board Games" onValueChange={(page) => onPageChange(page)} />
-            </div>
-            <div className="mx-4 grow flex flex-col">
-                <MyButton leftIcon={<FaWallet />} className="max-w-[80px]" onClick={() => onPageChange("payment")} />
-            </div>
-            <div className="mx-4 grow flex flex-col">
-                <MyButton leftIcon={<FaUser />} className="max-w-[80px]" onClick={() => onPageChange("profile")} />
-            </div>
+        <nav>
+            <RadioGroup
+                className="relative flex flex-row w-full h-16 items-center justify-center"
+                onValueChange={(page) => onPageChange(page)}
+            >
+                <RadioGroupItem value='boardgames' className=" absolute left-8 ">
+                    <label className=" font-medium text-xl cursor-pointer">House Of Board Games</label>
+                </RadioGroupItem>
+                <MyMenu
+                    items={menus}
+                    values={paths}
+                    className=" w-[480px]"
+                />
+
+                <RadioGroupItem value="payment" className=" absolute right-32">
+                    <FaWallet size={32} className=" hover:scale-110 active:scale-95 transition-transform" />
+                </RadioGroupItem>
+                <RadioGroupItem value="profile" className={`absolute right-8 border-2 border-black shadow-solid-s rounded-full p-4 ${buttonAnimation}`}>
+                    <FaUser />
+                </RadioGroupItem>
+            </RadioGroup>
         </nav>
+
     )
 }
 
