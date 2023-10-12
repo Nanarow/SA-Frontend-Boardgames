@@ -32,13 +32,13 @@ const LoginForm = () => {
                 leftIcon={<FaUser />}
                 placeholder="Username"
                 errorMsg="Invalid Email"
-                name="username"
+                name="username" required
             />
             <MyInput
                 leftIcon={<FaLock />}
                 type="password" placeholder="Password"
                 errorMsg="Wrong password?"
-                name="password"
+                name="password" required
             />
 
             <p className=" text-center my-2">

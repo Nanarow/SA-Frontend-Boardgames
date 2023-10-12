@@ -24,7 +24,7 @@ const BoardGames = () => {
     }, [])
 
     return (
-        <section className="flex flex-row h-[calc(100%-64px)]">
+        <section className="flex flex-row h-[calc(100%-80px)]">
             <SideBar />
             <section className=" w-[80%] ">
                 <div className=" h-[90%] flex flex-wrap justify-start gap-x-2 gap-y-2 mb-2 p-2">

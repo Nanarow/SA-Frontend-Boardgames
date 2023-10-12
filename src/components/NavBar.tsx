@@ -7,12 +7,8 @@ import { RadioGroup, RadioGroupItem } from './custom/radixPrimitives';
 
 const NavBar = () => {
     const navigate = useNavigate();
-    const location = window.location
     const menus = ["Board Games", "Rooms", "Pricing"]
     const paths = ["boardgames", "rooms", "pricing"]
-    function isActive(currentPath: string) {
-        return location.pathname === currentPath
-    }
     const onPageChange = (page: string) => {
         navigate(`/${page}`);
     }
@@ -24,8 +20,9 @@ const NavBar = () => {
     return (
         <nav>
             <RadioGroup
-                className="relative flex flex-row w-full h-16 items-center justify-center"
+                className="relative flex flex-row w-full h-20 items-center justify-center"
                 onValueChange={(page) => onPageChange(page)}
+                defaultValue='boardgames'
             >
                 <RadioGroupItem value='boardgames' className=" absolute left-8 ">
                     <label className=" font-medium text-xl cursor-pointer">House Of Board Games</label>
