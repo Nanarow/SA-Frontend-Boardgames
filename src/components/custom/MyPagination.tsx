@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaCaretLeft, FaCaretRight } from 'react-icons/fa6'
 
 interface IPage {
@@ -23,6 +23,11 @@ const MyPagination = ({ onValueChange, size = 10, current = 1, length = 999, dat
     }
     const prev = page === 1
     const next = page === length || dataLength < size
+
+    useEffect(() => {
+        setPage(current)
+    }, [current])
+
 
     return (
         <div className=" flex flex-row justify-between items-center border-2 border-black shadow-solid-m rounded px-2 py-2 mx-2 my-2">

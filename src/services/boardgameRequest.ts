@@ -47,6 +47,7 @@ async function UpdateBoardgame(formData: FormData, boardgame: Boardgame) {
       Src: newFile,
       Tutorial: `${formData.get("Tutorial")}`,
     };
+    console.log(data);
     return await http.Patch("/boardgames", JSON.stringify(data));
   }
 }
