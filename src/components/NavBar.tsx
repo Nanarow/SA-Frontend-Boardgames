@@ -7,6 +7,7 @@ import { RadioGroup, RadioGroupItem } from './custom/radixPrimitives';
 
 const NavBar = () => {
     const navigate = useNavigate();
+
     const menus = ["Board Games", "Rooms", "Pricing"]
     const paths = ["boardgames", "rooms", "pricing"]
     const onPageChange = (page: string) => {

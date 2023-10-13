@@ -23,11 +23,14 @@ const Auth = ({ form = "login" }: AuthProps) => {
     }
 
     useEffect(() => {
-        // getMember()
+        if (member) {
+            navigate("/boardgames")
+            // getMember()
+        }
     }, [])
 
     return (
-        < div className={`w-full h-screen flex items-center justify-center flex-col`}>
+        <div className={`w-full h-screen flex items-center justify-center flex-col`}>
             {/* transition-all ${form === "login" ? "flex-col" : "flex-row"} */}
             <div><span className="text-[#43c7ff] title mt-4">HOUSE </span><span className="text-[#ff5050] title mt-4">OF</span></div>
             <div><span className="text-[#2fd38e] title">BOARD </span><span className="text-[#fdc432] title">GAME</span></div>
