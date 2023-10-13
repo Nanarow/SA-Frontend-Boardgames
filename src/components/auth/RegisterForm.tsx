@@ -26,7 +26,7 @@ const SignUpForm = () => {
     return (
         <form className="card-form mt-4 flex h-auto w-[520px] flex-col justify-center rounded-lg border-2 border-black bg-white p-2 shadow-solid-m " ref={formRef} onSubmit={handleSubmit}>
             <h1 className=" text-center font-bold text-4xl m-2">Register</h1>
-            <div className="relative flex flex-row">
+            <div className="relative flex flex-row w-full">
                 <MyInput type="text" placeholder="First name" name="firstName" required />
                 <MyInput type="text" placeholder="Last name" name="lastName" required />
             </div>

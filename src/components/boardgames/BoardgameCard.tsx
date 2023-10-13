@@ -33,7 +33,7 @@ const BoardgameCard: React.FC<BoardgameCardProps> = ({ boardgame }) => {
                 <><MyDialog content={<ConfirmDelete boardgameID={boardgame.ID!} />} disableCloser={true}>
                     <MyButton leftIcon={<FaTrash />} className=" absolute -top-1 -right-1 bg-red-500" />
                 </MyDialog>
-                    <MyDialog content={<BoardgameForm boardgame={boardgame} />} className=" max-w-2xl" disableCloser>
+                    <MyDialog content={<BoardgameForm boardgame={boardgame} />} className=" max-w-xl" disableCloser>
                         <MyButton leftIcon={<FaPen />} className=" absolute top-[48%] -right-1 bg-amber-300" />
                     </MyDialog></> :
                 <MyDialog content={<RentForm boardgame={boardgame} />} disableCloser={true}>

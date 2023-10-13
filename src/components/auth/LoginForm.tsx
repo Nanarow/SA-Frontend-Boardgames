@@ -4,7 +4,7 @@ import MyInput from "../custom/MyInput";
 import MyButton from "../custom/MyButton";
 import { Link, useNavigate } from "react-router-dom";
 import { useMemberContext } from "../../contexts/MemberProvider";
-import { Login } from "../../services/memberRequest";
+import { GetMember, Login } from "../../services/memberRequest";
 
 
 
@@ -18,7 +18,7 @@ const LoginForm = () => {
             const formData = new FormData(formRef.current);
             const res = await Login(formData)
             if (res) {
-                setMember(res)
+                setMember(await GetMember(res.ID))
                 navigate("/boardgames")
             }
         }

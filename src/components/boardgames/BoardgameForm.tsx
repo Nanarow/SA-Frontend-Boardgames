@@ -36,15 +36,11 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
         <form className=" flex flex-col" ref={formRef} onSubmit={handleSubmit}>
             <div className="flex items-center ">
                 <label className=" w-48">Title :</label>
-                <div className=" grow">
-                    <MyInput name='Title' placeholder='' required defaultValue={boardgame?.Title} />
-                </div>
+                <MyInput name='Title' placeholder='' required defaultValue={boardgame?.Title} />
             </div>
             <div className="flex items-center ">
                 <label className=" w-48">NumberOfPlayers :</label>
-                <div className=" grow">
-                    <MyInput name='NumberOfPlayers' placeholder='' required defaultValue={boardgame?.NumberOfPlayers} />
-                </div>
+                <MyInput name='NumberOfPlayers' placeholder='' required defaultValue={boardgame?.NumberOfPlayers} />
             </div>
             <div className="flex items-center ">
                 <label className=" w-48">MinAge :</label>
@@ -56,9 +52,7 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
             </div>
             <div className="flex items-center ">
                 <label className=" w-48">Category :</label>
-                <div className=" grow">
-                    <MyInput name='Category' placeholder='Card Game Fantasy Horror Humor Science Fiction' required defaultValue={boardgame?.Category} />
-                </div>
+                <MyInput name='Category' placeholder='Card Game Fantasy Horror Humor Science Fiction' required defaultValue={boardgame?.Category} />
             </div>
             <div className="flex items-center ">
                 <label className=" w-48">RentalPrice :</label>
@@ -78,17 +72,13 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
             </div>
             <div className="flex items-center ">
                 <label className=" w-48">Src :</label>
-                <div className=" grow">
-                    <MyInput name='SrcFile' placeholder='' type="file" accept="image/*" required={(boardgame) ? false : true} />
-                </div>
+                <MyInput name='SrcFile' placeholder='' type="file" accept="image/*" required={(boardgame) ? false : true} />
             </div>
             {/* <label className=" ml-48 text-center">OR</label>
             <MyInput name='SrcLink' placeholder='https://www.gameology.com.au/cdn/shop/files/1e678_348x.progressive.jpg' type="url" className="ml-[196px]" /> */}
             <div className="flex items-center ">
                 <label className=" w-48">Tutorial :</label>
-                <div className=" grow">
-                    <MyInput name='Tutorial' placeholder='https://youtu.be/7rgWdXy0H...' type="url" required defaultValue={boardgame?.Tutorial} />
-                </div>
+                <MyInput name='Tutorial' placeholder='https://youtu.be/7rgWdXy0H...' type="url" required defaultValue={boardgame?.Tutorial} />
             </div>
 
             <div className=" self-end flex flex-row items-center justify-center gap-4">
