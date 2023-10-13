@@ -3,10 +3,10 @@ import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 const RadioGroup = RadioGroupPrimitive.Root;
 const RadioGroupItem = RadioGroupPrimitive.Item;
 const RadioGroupIndicator = RadioGroupPrimitive.Indicator;
-interface IRadioGroup {
+interface IRadioGroup extends RadioGroupPrimitive.RadioGroupProps {
   items: string[];
   values: any[];
-  className: string;
+  className?: string;
 }
 
 const NavigationMenu = NavigationMenuPrimitive.Root;

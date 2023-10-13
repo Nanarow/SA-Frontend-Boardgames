@@ -1,11 +1,11 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react'
 import { MemberWithMemberType } from '../interfaces'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 type MemberContextProps = {
     member: MemberWithMemberType | undefined,
     memberType: Role | undefined,
-    setMember: (member: MemberWithMemberType) => void
+    setMember: (member: MemberWithMemberType | undefined) => void
 }
 
 type Role = 'user' | 'admin'
@@ -16,12 +16,17 @@ const MemberProvider = ({ children }: PropsWithChildren) => {
     const [member, setMemberWithType] = useState<MemberWithMemberType>()
     const [memberType, setMemberType] = useState<Role>()
     const navigate = useNavigate();
-    function setMember(member: MemberWithMemberType) {
+    function setMember(member: MemberWithMemberType | undefined) {
         setMemberWithType(member)
-        if (member.MemberType.Name === "admin") {
-            setMemberType("admin")
+        if (member) {
+            if (member.MemberType.Name === "admin") {
+                setMemberType("admin")
+            } else {
+                setMemberType("user")
+            }
         } else {
-            setMemberType("user")
+            setMemberType(undefined)
+            navigate("/login")
         }
     }
 
@@ -52,6 +57,6 @@ export function useMemberContext() {
 }
 
 export function authRequired() {
-    const location = window.location
-    return !(location.pathname === "/login" || location.pathname === "/" || location.pathname === "/register")
+    const path = window.location.pathname
+    return !(path === "/login" || path === "/" || path === "/register")
 }

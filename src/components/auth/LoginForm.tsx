@@ -24,6 +24,7 @@ const LoginForm = () => {
         }
 
     }
+
     return (
         <form className="card-form mt-4 flex h-72 w-96 flex-col rounded-md border-2 border-black bg-white p-2 shadow-solid-l justify-center" onSubmit={handleSubmit} ref={formRef}>
             <h1 className=" text-6xl font-bold mb-4 text-center">LOG IN</h1>

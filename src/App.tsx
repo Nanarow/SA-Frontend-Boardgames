@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import MyComponents from './components/test/MyComponents';
+import MyComponents from './components/__test__/MyComponents';
 import BoardGames from './pages/BoardGames';
 import Rooms from './pages/Rooms';
 import Pricing from './pages/Pricing';
@@ -15,7 +15,7 @@ import { toastOptions } from './components/custom/notify';
 function App() {
   const { memberType } = useMemberContext()
   return (
-    <main className=" h-screen m-0 w-full overflow-hidden overscroll-none">
+    <main className=" h-screen m-0 w-full">
       <NavBar />
       {(memberType === "admin") ?
         <Routes>
