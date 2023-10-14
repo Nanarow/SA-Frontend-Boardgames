@@ -63,14 +63,14 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType })
     return (
         <form className=" flex flex-col" ref={formRef} onSubmit={(e) => { handleSubmit(e) }}>
             <img src={QRcode} className=" h-64 object-contain"></img>
-            <label>Total {total} ฿</label>
-            <label>Upload slip</label>
+            <label className=" text-center text-xl font-bold">Total <span className=" text-red-500">{total}</span> ฿</label>
+            <label className=" text-center">Upload slip</label>
             <MyInput type="file" name='fileSlip' accept="image/*" required></MyInput>
-            <div className=" self-end flex flex-row items-center justify-center gap-4">
+            <div className="flex items-center justify-between gap-4">
                 <DialogCloser>
-                    <label>cancel</label>
+                    <label className=' text-slate-500 ml-2'>cancel</label>
                 </DialogCloser>
-                <MyButton label="Submit" type='submit' />
+                <MyButton label="Confirm Payment!" type='submit' className=" bg-green-400 text-white" />
             </div>
         </form>
     )

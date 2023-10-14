@@ -79,7 +79,7 @@ const MyComponents = () => {
                 <MyDialog content={<TestDialog />} >
                     <MyButton label="Open dialog" />
                 </MyDialog>
-                <MyMenu items={["test1", "test2", "test3", "test4"]} values={["test1", "test2", "test3", "test4"]} className={""} />
+                {/* <MyMenu items={["test1", "test2", "test3", "test4"]} values={["test1", "test2", "test3", "test4"]} className={""} /> */}
                 <MyPagination />
                 <MyButton label="Test Api delete" onClick={() => handleDelete(2)} />
                 <MyButton label="Test Api get" onClick={handleGet} />

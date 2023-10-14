@@ -58,5 +58,5 @@ export function useMemberContext() {
 
 export function authRequired() {
     const path = window.location.pathname
-    return !(path === "/login" || path === "/" || path === "/register")
+    return !(path === "/login" || path === "/" || path === "/register" || path === "/components")
 }

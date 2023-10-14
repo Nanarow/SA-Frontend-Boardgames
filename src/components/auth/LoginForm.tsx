@@ -18,8 +18,11 @@ const LoginForm = () => {
             const formData = new FormData(formRef.current);
             const res = await Login(formData)
             if (res) {
-                setMember(await GetMember(res.ID))
-                navigate("/boardgames")
+                const data = await GetMember(res.ID)
+                if (data) {
+                    setMember(data)
+                    navigate("/boardgames")
+                }
             }
         }
 

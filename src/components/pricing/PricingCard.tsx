@@ -14,7 +14,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ memberType }) => {
     const { member } = useMemberContext()
     return (
 
-        <div className={`flex flex-col justify-start h-full ${(member?.MemberTypeID === memberType.ID) ? "bg-green-400" : ""}`}>
+        <div className={`flex flex-col justify-start h-full ${(member?.MemberTypeID === memberType.ID) ? " bg-violet-400" : ""}`}>
             <label className=' text-center text-2xl mt-6'>{memberType.Name}</label>
             <label className=' font-bold text-5xl my-16 text-center'>{memberType.Price === 0 ? "Free!" : `${memberType.Price}`} <label className=' text-sm font-medium'>/ month</label></label>
             <div className=' self-start ml-2 mt-2'>
@@ -24,11 +24,15 @@ const PricingCard: React.FC<PricingCardProps> = ({ memberType }) => {
                 </div>
             </div>
             {
-                (member) ? (member.MemberTypeID === memberType.ID || memberType.ID < member.MemberTypeID) ? null : (<div className=' absolute mt-[40px] bottom-6 left-1/2 -translate-x-[50%]'>
-                    <MyDialog content={<PaymentForm memberType={memberType} />} disableCloser={true}>
-                        <MyButton label='Get Start' />
-                    </MyDialog>
-                </div>) : null
+                (member) ?
+                    (member.MemberTypeID !== memberType.ID && memberType.ID > member.MemberTypeID) ?
+                        (<div className=' absolute mt-[40px] bottom-6 left-1/2 -translate-x-[50%]'>
+                            <MyDialog content={<PaymentForm memberType={memberType} />} disableCloser={true}>
+                                <MyButton label='Get Start' />
+                            </MyDialog>
+                        </div>) :
+                        null :
+                    null
             }
 
         </div>

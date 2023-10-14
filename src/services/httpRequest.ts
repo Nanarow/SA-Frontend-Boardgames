@@ -37,8 +37,14 @@ class HTTPRequest {
       NotifyError(result.error);
       return;
     }
-    if (method !== "GET") {
-      NotifySuccess(endpoint.replace(this.baseUrl, ""));
+    if (method === "POST") {
+      NotifySuccess("Success");
+    }
+    if (method === "PATCH") {
+      NotifySuccess("Update Success");
+    }
+    if (method === "DELETE") {
+      NotifySuccess("Delete Success");
     }
     return result.data;
   }

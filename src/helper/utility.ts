@@ -86,3 +86,11 @@ export function addTimeToDate(
   endDate.setDate(endDate.getDate() + days);
   return endDate;
 }
+
+export function urlToEmbed(url: string) {
+  const id = url.split("/").at(-1);
+  if (id?.indexOf("=") == -1) {
+    return "https://www.youtube.com/embed/" + id;
+  }
+  return "https://www.youtube.com/embed/" + id?.split("=").at(-1);
+}

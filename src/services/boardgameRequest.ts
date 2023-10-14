@@ -34,7 +34,7 @@ async function UpdateBoardgame(formData: FormData, boardgame: Boardgame) {
         ? boardgame.Src
         : base64;
     const data: Boardgame = {
-      ID: boardgame.ID!,
+      ID: boardgame.ID,
       Title: `${formData.get("Title")}`,
       NumberOfPlayers: `${formData.get("NumberOfPlayers")}`,
       MinAge: Number(`${formData.get("MinAge")}`),
@@ -47,7 +47,6 @@ async function UpdateBoardgame(formData: FormData, boardgame: Boardgame) {
       Src: newFile,
       Tutorial: `${formData.get("Tutorial")}`,
     };
-    console.log(data);
     return await http.Patch("/boardgames", JSON.stringify(data));
   }
 }

@@ -21,7 +21,10 @@ function App() {
         <Routes>
           <Route path="/components" element={<MyComponents />} />
           <Route path="/boardgames" element={<BoardGames />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/*" element={<Auth form="login" />} />
+          <Route path="/login" element={<Auth form="login" />} />
+          <Route path="/register" element={<Auth form="register" />} />
           <Route path="/loading/:page" element={<Loading />} />
         </Routes> :
         <Routes>

@@ -7,7 +7,7 @@ import { CreateBoardGame, UpdateBoardgame } from '../../services/boardgameReques
 import { useMemberContext } from '../../contexts/MemberProvider';
 import { useNavigate } from 'react-router-dom';
 
-interface IBGForm {
+export interface IBGForm {
     boardgame?: Boardgame
 }
 
@@ -33,7 +33,7 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
 
 
     return (
-        <form className=" flex flex-col" ref={formRef} onSubmit={handleSubmit}>
+        <form className=" flex flex-col w-full" ref={formRef} onSubmit={handleSubmit}>
             <div className="flex items-center ">
                 <label className=" w-48">Title :</label>
                 <MyInput name='Title' placeholder='' required defaultValue={boardgame?.Title} />
@@ -72,7 +72,7 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
             </div>
             <div className="flex items-center ">
                 <label className=" w-48">Src :</label>
-                <MyInput name='SrcFile' placeholder='' type="file" accept="image/*" required={(boardgame) ? false : true} />
+                <MyInput name='SrcFile' type="file" accept="image/*" required={(boardgame) ? false : true} />
             </div>
             {/* <label className=" ml-48 text-center">OR</label>
             <MyInput name='SrcLink' placeholder='https://www.gameology.com.au/cdn/shop/files/1e678_348x.progressive.jpg' type="url" className="ml-[196px]" /> */}
@@ -83,9 +83,9 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
 
             <div className=" self-end flex flex-row items-center justify-center gap-4">
                 <DialogCloser>
-                    <label >cancel</label>
+                    <label className=" text-slate-500">cancel</label>
                 </DialogCloser>
-                <MyButton label="Submit" type="submit" />
+                <MyButton label={(boardgame) ? "Update" : "Create"} type="submit" className=" bg-green-400" />
             </div>
         </form>
     )

@@ -41,6 +41,9 @@ async function GetAllMemberType() {
 async function GetMember(id: number) {
   return (await http.Get(`/members/${id}`)) as MemberWithMemberType;
 }
+async function GetUserByID(id: number) {
+  return (await http.Get(`/users/${id}`)) as User;
+}
 
 async function Login(formData: FormData) {
   const data: LoginPayload = {
@@ -68,4 +71,11 @@ async function Register(formData: FormData) {
   )) as MemberWithMemberType;
 }
 
-export { CreateMemberBill, GetAllMemberType, GetMember, Login, Register };
+export {
+  CreateMemberBill,
+  GetAllMemberType,
+  GetMember,
+  Login,
+  Register,
+  GetUserByID,
+};

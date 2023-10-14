@@ -79,9 +79,9 @@ const SideBar = ({ onValueCommit }: SideBarPops) => {
                 <MyInput className=' w-[80%]' placeholder="Search" ref={searchRef} onChange={clear} />
                 <MyButton leftIcon={<FaMagnifyingGlass />} onClick={search} />
             </div>
-            <label className="m-2 text-lg font-semibold">Age (Year)</label>
+            <label className="m-2 text-lg font-semibold">Age (years)</label>
             <MySlider min={6} max={100} defaultValue={[0]} onValueCommit={ageCommit}></MySlider>
-            <label className="m-2 text-lg font-semibold">Play Time (Minute)</label>
+            <label className="m-2 text-lg font-semibold">Play Time (minutes)</label>
             <MySlider min={10} max={240} defaultValue={[0]} onValueCommit={timeCommit} step={5}></MySlider>
             {/* <label className="m-2 text-lg font-semibold">Number of players</label>
             <MySlider min={2} max={20} defaultValue={[4]}></MySlider> */}

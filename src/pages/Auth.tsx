@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useMemberContext } from '../contexts/MemberProvider'
-import MyButton from '../components/custom/MyButton'
-import { GetMember } from '../services/memberRequest'
 import { useNavigate } from 'react-router-dom'
 import LoginForm from '../components/auth/LoginForm'
 import RegisterForm from '../components/auth/RegisterForm'
@@ -11,21 +9,11 @@ interface AuthProps {
 }
 
 const Auth = ({ form = "login" }: AuthProps) => {
-    const { setMember, memberType, member } = useMemberContext()
+    const { member } = useMemberContext()
     const navigate = useNavigate();
-    async function getMember() {
-        const m = await GetMember(2)
-        if (m) {
-            setMember(m)
-            navigate("/boardgames")
-        }
-        // console.log(m)
-    }
-
     useEffect(() => {
         if (member) {
             navigate("/boardgames")
-            // getMember()
         }
     }, [])
 

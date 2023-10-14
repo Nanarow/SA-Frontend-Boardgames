@@ -5,7 +5,7 @@ export function NotifyError(message: string) {
 }
 
 export function NotifySuccess(message: string) {
-  toast.success(`Success to fetch data from\n${message}`, {
+  toast.success(`${message}`, {
     duration: 3000,
   });
 }
