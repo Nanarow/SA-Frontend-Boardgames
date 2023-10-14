@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react'
-import MyButton from '../components/custom/MyButton'
-
 import { useMemberContext } from '../contexts/MemberProvider'
-import { GameBill, RoomBill } from '../interfaces'
-
-import MyDialog from '../components/custom/MyDialog'
-import PaymentForm from '../components/payment/PaymentForm'
+import { GameBill, MemberWithMemberType, RoomBill } from '../interfaces'
 import { GetRoomBills } from '../services/roomRequest'
 import { GetGameBills } from '../services/boardgameRequest'
 
@@ -14,19 +9,17 @@ const Payment = () => {
     const { member } = useMemberContext()
     const [roomBills, setRoomBills] = useState<RoomBill[]>([])
     const [gameBills, setGameBills] = useState<GameBill[]>([])
-    async function getAllRoomBill() {
-        if (member) {
-            setRoomBills(await GetRoomBills(`status=pending&mid=${member.ID}`))
-        }
+    async function getAllRoomBill(member: MemberWithMemberType) {
+        setRoomBills(await GetRoomBills(`status=pending&mid=${member.ID}`))
     }
-    async function getAllGameBill() {
-        if (member) {
-            setGameBills(await GetGameBills(`status=pending&mid=${member.ID}`))
-        }
+    async function getAllGameBill(member: MemberWithMemberType) {
+        setGameBills(await GetGameBills(`status=pending&mid=${member.ID}`))
     }
     useEffect(() => {
-        getAllRoomBill()
-        getAllGameBill()
+        if (member) {
+            getAllRoomBill(member)
+            getAllGameBill(member)
+        }
     }, [])
 
 
@@ -37,10 +30,6 @@ const Payment = () => {
                 {gameBills.map((bill, index) => (
                     (<div key={index} className="flex items-center justify-between border-2 border-orange-800 p-2">
                         <label>Boardgame ID {bill.BoardgameID}</label>
-                        <MyDialog content={<PaymentForm gameBill={bill} />} disableCloser={true}>
-                            <MyButton label="Pay" />
-                        </MyDialog>
-
                     </div>)
                 ))}
             </div>
@@ -48,10 +37,6 @@ const Payment = () => {
                 <label className=" text-center">Room Bill</label>
                 {roomBills.map((bill, index) => (<div key={index} className="flex items-center justify-between border-2 border-orange-800 p-2">
                     <label>Room ID {bill.RoomID}</label>
-                    <MyDialog content={<PaymentForm roomBill={bill} />} disableCloser={true}>
-                        <MyButton label="Pay" />
-                    </MyDialog>
-
                 </div>))}
 
             </div>

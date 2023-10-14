@@ -4,20 +4,16 @@ import MyButton from '../custom/MyButton';
 import MyInput from '../custom/MyInput';
 import QRcode from '../../assets/QRCode.jpg'
 import { useMemberContext } from '../../contexts/MemberProvider';
-import { GameBill, MemberType, RoomBill } from '../../interfaces';
+import { MemberType } from '../../interfaces';
 import { useNavigate } from 'react-router-dom';
-import { UpdateRoomBill } from '../../services/roomRequest';
-import { UpdateGameBill } from '../../services/boardgameRequest';
 import { CreateMemberBill } from '../../services/memberRequest';
 
 interface PaymentProps {
-    roomBill?: RoomBill
-    gameBill?: GameBill
     memberType?: MemberType
 
 }
 
-const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType }) => {
+const PaymentForm: React.FC<PaymentProps> = ({ memberType }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
     const { member, setMember } = useMemberContext()
     const [total, setTotal] = useState(0)
@@ -28,14 +24,6 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType })
         if (formRef.current) {
             if (member) {
                 const formData = new FormData(formRef.current);
-                if (roomBill) {
-                    await UpdateRoomBill(formData, roomBill)
-                    navigate("/loading/payment")
-                }
-                if (gameBill) {
-                    await UpdateGameBill(formData, gameBill)
-                    navigate("/loading/payment")
-                }
                 if (memberType) {
                     const newMember = await CreateMemberBill(formData, member, memberType)
                     if (newMember) {
@@ -48,12 +36,7 @@ const PaymentForm: React.FC<PaymentProps> = ({ roomBill, gameBill, memberType })
     };
 
     useEffect(() => {
-        if (roomBill) {
-            setTotal(roomBill.Total)
-        }
-        if (gameBill) {
-            setTotal(gameBill.Total)
-        }
+
         if (memberType) {
             setTotal(memberType.Price)
         }
