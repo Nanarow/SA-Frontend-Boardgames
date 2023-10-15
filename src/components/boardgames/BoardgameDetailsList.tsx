@@ -10,7 +10,7 @@ const BoardgameDetailsList = ({ boardgame }: BoardgameCardProps) => {
                 <div className="flex flex-col w-64 justify-between m-4">
                     <label>Title :</label>
                     <label>NumberOfPlayers :</label>
-                    <label>MinAge :</label>
+                    <label>MinimumAge :</label>
                     <label>PlayTime :</label>
                     <label>Category :</label>
                     <label>RentalPrice :</label>

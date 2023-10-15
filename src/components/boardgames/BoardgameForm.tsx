@@ -43,7 +43,7 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
                 <MyInput name='NumberOfPlayers' placeholder='' required defaultValue={boardgame?.NumberOfPlayers} />
             </div>
             <div className="flex items-center ">
-                <label className=" w-48">MinAge :</label>
+                <label className=" w-48">MinimumAge :</label>
                 <MyInput name='MinAge' placeholder='' type="number" required defaultValue={boardgame?.MinimumAge} />
             </div>
             <div className="flex items-center ">
@@ -71,7 +71,7 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
                 <MyInput name='Deposit' placeholder='' type="number" required defaultValue={boardgame?.Deposit} />
             </div>
             <div className="flex items-center ">
-                <label className=" w-48">Src :</label>
+                <label className=" w-48">Source :</label>
                 <MyInput name='SrcFile' type="file" accept="image/*" required={(boardgame) ? false : true} />
             </div>
             {/* <label className=" ml-48 text-center">OR</label>
@@ -85,7 +85,7 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
                 <DialogCloser>
                     <label className=" text-slate-500">cancel</label>
                 </DialogCloser>
-                <MyButton label={(boardgame) ? "Update" : "Create"} type="submit" className=" bg-green-400" />
+                <MyButton label={(boardgame) ? "Update" : "Add"} type="submit" className=" bg-green-400" />
             </div>
         </form>
     )

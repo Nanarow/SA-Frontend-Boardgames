@@ -53,9 +53,11 @@ const BoardgameCard: React.FC<BoardgameCardProps> = ({ boardgame }) => {
                         <MyButton leftIcon={<FaPen />} className=" absolute -bottom-1 -right-1 bg-yellow-300" />
                     </MyDialog>
                 </> :
-                <MyDialog content={<RentForm boardgame={boardgame} />} disableCloser={true}>
-                    <MyButton label="Rent" className=" absolute bottom-2 right-2 bg-[#FC7262] text-white" />
-                </MyDialog>}
+                (boardgame.QuantityInStock !== 0) ?
+                    <MyDialog content={<RentForm boardgame={boardgame} />} disableCloser={true}>
+                        <MyButton label="Rent" className=" absolute bottom-2 right-2 bg-[#FC7262] text-white" />
+                    </MyDialog> :
+                    null}
         </div>
     )
 }
