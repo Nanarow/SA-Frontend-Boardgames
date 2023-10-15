@@ -10,14 +10,14 @@ async function CreateBoardGame(formData: FormData) {
     const data: Boardgame = {
       Title: `${formData.get("Title")}`,
       NumberOfPlayers: `${formData.get("NumberOfPlayers")}`,
-      MinAge: Number(`${formData.get("MinAge")}`),
+      MinimumAge: Number(`${formData.get("MinAge")}`),
       PlayTime: Number(`${formData.get("PlayTime")}`),
       Category: `${formData.get("Category")}`,
       RentalPrice: Number(`${formData.get("RentalPrice")}`),
       QuantityInStock: Number(`${formData.get("QuantityInStock")}`),
       QuantityInRental: Number(`${formData.get("QuantityInRental")}`),
       Deposit: Number(`${formData.get("Deposit")}`),
-      Src: base64,
+      Source: base64,
       Tutorial: `${formData.get("Tutorial")}`,
     };
     console.log(data);
@@ -31,20 +31,20 @@ async function UpdateBoardgame(formData: FormData, boardgame: Boardgame) {
     const base64 = await ImageToBase64(file);
     const newFile =
       base64 === "data:application/octet-stream;base64,"
-        ? boardgame.Src
+        ? boardgame.Source
         : base64;
     const data: Boardgame = {
       ID: boardgame.ID,
       Title: `${formData.get("Title")}`,
       NumberOfPlayers: `${formData.get("NumberOfPlayers")}`,
-      MinAge: Number(`${formData.get("MinAge")}`),
+      MinimumAge: Number(`${formData.get("MinAge")}`),
       PlayTime: Number(`${formData.get("PlayTime")}`),
       Category: `${formData.get("Category")}`,
       RentalPrice: Number(`${formData.get("RentalPrice")}`),
       QuantityInStock: Number(`${formData.get("QuantityInStock")}`),
       QuantityInRental: Number(`${formData.get("QuantityInRental")}`),
       Deposit: Number(`${formData.get("Deposit")}`),
-      Src: newFile,
+      Source: newFile,
       Tutorial: `${formData.get("Tutorial")}`,
     };
     return await http.Patch("/boardgames", JSON.stringify(data));

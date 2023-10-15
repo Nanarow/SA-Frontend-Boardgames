@@ -17,7 +17,7 @@ const BoardgameCard: React.FC<BoardgameCardProps> = ({ boardgame }) => {
     const { memberType } = useMemberContext()
     return (
         <div className=" w-[24%] h-1/2 border-2 border-black rounded shadow-solid-s relative " >
-            <img src={boardgame.Src}
+            <img src={boardgame.Source}
                 className=' border-b-2 border-black h-1/2 object-contain w-full bg-white'></img>
             <div className="flex flex-col">
                 <label className='ml-2 font-medium text-xl mb-2 truncate pr-8'>{boardgame.Title}</label>

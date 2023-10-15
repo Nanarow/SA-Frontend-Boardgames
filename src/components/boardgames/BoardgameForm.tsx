@@ -44,7 +44,7 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
             </div>
             <div className="flex items-center ">
                 <label className=" w-48">MinAge :</label>
-                <MyInput name='MinAge' placeholder='' type="number" required defaultValue={boardgame?.MinAge} />
+                <MyInput name='MinAge' placeholder='' type="number" required defaultValue={boardgame?.MinimumAge} />
             </div>
             <div className="flex items-center ">
                 <label className=" w-48">PlayTime :</label>

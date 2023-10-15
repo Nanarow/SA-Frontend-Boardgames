@@ -2,14 +2,14 @@ interface Boardgame {
   ID?: number;
   Title: string;
   NumberOfPlayers: string;
-  MinAge: number;
+  MinimumAge: number;
   PlayTime: number;
   Category: string;
   RentalPrice: number;
   QuantityInStock: number;
   QuantityInRental: number;
   Deposit: number;
-  Src: string;
+  Source: string;
   Tutorial: string;
 }
 
