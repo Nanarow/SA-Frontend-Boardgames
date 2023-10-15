@@ -74,8 +74,6 @@ const BoardgameForm = ({ boardgame }: IBGForm) => {
                 <label className=" w-48">Source :</label>
                 <MyInput name='SrcFile' type="file" accept="image/*" required={(boardgame) ? false : true} />
             </div>
-            {/* <label className=" ml-48 text-center">OR</label>
-            <MyInput name='SrcLink' placeholder='https://www.gameology.com.au/cdn/shop/files/1e678_348x.progressive.jpg' type="url" className="ml-[196px]" /> */}
             <div className="flex items-center ">
                 <label className=" w-48">Tutorial :</label>
                 <MyInput name='Tutorial' placeholder='https://youtu.be/7rgWdXy0H...' type="url" required defaultValue={boardgame?.Tutorial} />

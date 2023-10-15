@@ -3,6 +3,9 @@ import { Boardgame, GameBill, MemberWithMemberType } from "../interfaces";
 import { HTTPRequest } from "./httpRequest";
 
 const http = new HTTPRequest();
+async function GetBoardgames(query: string) {
+  return (await http.Get(`/boardgames?${query}`)) as Boardgame[];
+}
 async function CreateBoardGame(formData: FormData) {
   const file = formData.get("SrcFile");
   if (file instanceof File) {
@@ -51,6 +54,10 @@ async function UpdateBoardgame(formData: FormData, boardgame: Boardgame) {
   }
 }
 
+async function DeleteBoardgame(boardgameID: number) {
+  return await http.Delete(`/boardgames/${boardgameID}`);
+}
+
 async function CreateGameBill(
   formData: FormData,
   member: MemberWithMemberType,
@@ -87,16 +94,8 @@ async function UpdateGameBill(formData: FormData, gameBill: GameBill) {
   }
 }
 
-async function GetBoardgames(query: string) {
-  return (await http.Get(`/boardgames?${query}`)) as Boardgame[];
-}
-
 async function GetGameBills(query: string) {
   return (await http.Get(`/boardgames/bills?${query}`)) as GameBill[];
-}
-
-async function DeleteBoardgame(boardgameID: number) {
-  return await http.Delete(`/boardgames/${boardgameID}`);
 }
 
 export {
