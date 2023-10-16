@@ -3,7 +3,7 @@ import MyButton from '../custom/MyButton'
 import MyCheckbox from '../custom/MyCheckbox'
 import { MemberType } from '../../interfaces'
 import MyDialog from '../custom/MyDialog'
-import PaymentForm from '../payment/PaymentForm'
+import SubscriptionForm from '../pricing/SubscriptionForm'
 import { useMemberContext } from '../../contexts/MemberProvider'
 
 
@@ -27,7 +27,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ memberType }) => {
                 (member) ?
                     (member.MemberTypeID !== memberType.ID && memberType.ID > member.MemberTypeID) ?
                         (<div className=' absolute mt-[40px] bottom-6 left-1/2 -translate-x-[50%]'>
-                            <MyDialog content={<PaymentForm memberType={memberType} />} disableCloser={true}>
+                            <MyDialog content={<SubscriptionForm memberType={memberType} />} disableCloser={true}>
                                 <MyButton label='Get Start' />
                             </MyDialog>
                         </div>) :

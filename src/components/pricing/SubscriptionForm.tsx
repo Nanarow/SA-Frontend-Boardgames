@@ -13,7 +13,7 @@ interface PaymentProps {
 
 }
 
-const PaymentForm: React.FC<PaymentProps> = ({ memberType }) => {
+const SubscriptionForm: React.FC<PaymentProps> = ({ memberType }) => {
     const formRef = useRef<HTMLFormElement | null>(null);
     const { member, setMember } = useMemberContext()
     const [total, setTotal] = useState(0)
@@ -59,4 +59,4 @@ const PaymentForm: React.FC<PaymentProps> = ({ memberType }) => {
     )
 }
 
-export default PaymentForm
+export default SubscriptionForm
